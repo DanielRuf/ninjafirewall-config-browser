@@ -1,0 +1,41 @@
+{
+  "name": "ninjafirewall-config-browser",
+  "private": true,
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "repository": "git@github.com:DanielRuf/ninjafirewall-config-browser.git",
+  "author": "Daniel Ruf <daniel@daniel-ruf.de>",
+  "license": "MIT",
+  "dependencies": {
+    "file-saver": "^2.0.2",
+    "tailwindcss": "^1.2.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.9.0",
+    "@babel/preset-env": "^7.9.0",
+    "@fullhuman/postcss-purgecss": "^2.1.0",
+    "autoprefixer": "^9.7.5",
+    "babel-loader": "^8.1.0",
+    "babel-plugin-syntax-dynamic-import": "^6.18.0",
+    "clean-webpack-plugin": "^3.0.0",
+    "copy-webpack-plugin": "^5.1.1",
+    "css-loader": "^3.4.2",
+    "filter-webpack-plugin": "^1.1.1",
+    "html-webpack-plugin": "^4.0.4",
+    "mini-css-extract-plugin": "^0.9.0",
+    "optimize-css-assets-webpack-plugin": "^5.0.3",
+    "postcss-loader": "^3.0.0",
+    "precss": "^4.0.0",
+    "style-loader": "^1.1.3",
+    "terser-webpack-plugin": "^2.3.5",
+    "webpack": "^4.42.1",
+    "webpack-cli": "^3.3.11",
+    "webpack-pwa-manifest": "^4.2.0",
+    "workbox-sw": "^5.1.2",
+    "workbox-webpack-plugin": "^5.1.2"
+  },
+  "scripts": {
+    "build": "webpack --mode=production"
+  }
+}

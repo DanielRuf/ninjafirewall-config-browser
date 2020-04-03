@@ -1,0 +1,31 @@
+{
+  "icons": [
+    {
+      "src": "icon_250x250.acbc6b80265619c55e754d7e0bdbbace.png",
+      "sizes": "250x250",
+      "type": "image/png"
+    },
+    {
+      "src": "icon_192x192.241942c049a2b89dbda290a014997360.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icon_128x128.a1a705e773ed122a8181a98bfb8f2f3c.png",
+      "sizes": "128x128",
+      "type": "image/png"
+    },
+    {
+      "src": "icon_96x96.d95388d4e7388d2189ef18554db4f798.png",
+      "sizes": "96x96",
+      "type": "image/png"
+    }
+  ],
+  "name": "Patch Cutter",
+  "short_name": "Patch Cutter",
+  "orientation": "portrait",
+  "display": "standalone",
+  "start_url": "https://danielruf.github.io/ninjafirewall-config-browser/",
+  "description": "Cut your patches into pieces",
+  "background_color": "#ffffff"
+}
