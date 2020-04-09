@@ -21,11 +21,11 @@
       "type": "image/png"
     }
   ],
-  "name": "Patch Cutter",
-  "short_name": "Patch Cutter",
+  "name": "NinjaFirewall Config",
+  "short_name": "NinjaFirewall Config",
   "orientation": "portrait",
   "display": "standalone",
   "start_url": "https://danielruf.github.io/ninjafirewall-config-browser/",
-  "description": "Cut your patches into pieces",
+  "description": "Get a default NinjaFirewall configuration",
   "background_color": "#ffffff"
 }
