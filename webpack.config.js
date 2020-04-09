@@ -87,9 +87,9 @@ module.exports = {
       ]
     }),
     new WebpackPwaManifest({
-      name: 'Patch Cutter',
-      short_name: 'Patch Cutter',
-      description: 'Cut your patches into pieces',
+      name: 'NinjaFirewall Config',
+      short_name: 'NinjaFirewall Config',
+      description: 'Get a default NinjaFirewall configuration',
       start_url: 'https://danielruf.github.io/ninjafirewall-config-browser/',
       background_color: '#ffffff',
       crossorigin: null, //can be null, use-credentials or anonymous
