@@ -1,3 +1,4 @@
+const fs = require('fs');
 const path = require('path');
 const webpack = require('webpack');
 
@@ -68,6 +69,19 @@ const purgecss = require('@fullhuman/postcss-purgecss')({
   defaultExtractor: content => content.match(/[\w-/:]+(?<!:)/g) || []
 });
 
+const config = fs.readFileSync('./src/config/config.json', {encoding: 'utf-8'});
+const rules = fs.readFileSync('./src/config/rules.json', {encoding: 'utf-8'});
+
+const configString = config
+    .replace(/(\r\n|\n|\r|\t|\s\s\s\s|\s\s)/gm, "")
+    .replace(/(\\)/gm, "\\\\")
+    .replace(/(\": )/gm, "\":");
+
+const rulesString = rules
+    .replace(/(\r\n|\n|\r|\t|\s\s\s\s|\s\s)/gm, "")
+    .replace(/(\\)/gm, "\\\\")
+    .replace(/(\": )/gm, "\":");
+
 module.exports = {
   mode: 'development',
 
@@ -108,7 +122,24 @@ module.exports = {
   ],
 
   module: {
-    rules: [{
+    rules: [
+    {
+      test: /index\.js$/,
+      loader: 'string-replace-loader',
+      options: {
+        search: '###CONFIG###',
+        replace: configString,
+      }
+    },
+    {
+      test: /index\.js$/,
+      loader: 'string-replace-loader',
+      options: {
+        search: '###RULES###',
+        replace: rulesString,
+      }
+    },
+    {
       test: /.(js|jsx)$/,
       include: [],
       loader: 'babel-loader'
