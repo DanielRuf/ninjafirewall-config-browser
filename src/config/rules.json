@@ -1801,19 +1801,14 @@
         }
     },
     "1352": {
-        "why": "Unauthorized file access",
+        "why": "WP vulnerability",
         "lev": 3,
         "ena": 1,
         "cha": {
             "1": {
                 "whe": "REQUEST:action",
-                "wha": "arf_delete_file",
-                "ope": 1
-            },
-            "2": {
-                "whe": "POST:file_name",
-                "wha": "",
-                "ope": 7
+                "wha": "^mapp_(tpl_)?(save|delete)$",
+                "ope": 5
             }
         }
     },
@@ -1882,12 +1877,12 @@
     },
     "1357": {
         "why": "WP vulnerability",
-        "lev": 2,
+        "lev": 3,
         "ena": 1,
         "cha": {
             "1": {
                 "whe": "REQUEST:action",
-                "wha": "core37_lp_save_page",
+                "wha": "import_widget_data",
                 "ope": 1
             }
         }
@@ -1951,18 +1946,6 @@
                 "whe": "REQUEST:action",
                 "wha": "eps_redirect_",
                 "ope": 3
-            }
-        }
-    },
-    "1363": {
-        "why": "WP vulnerability",
-        "lev": 3,
-        "ena": 1,
-        "cha": {
-            "1": {
-                "whe": "REQUEST:action",
-                "wha": "^(twoj_slideshow|ape_gallery)_setup$",
-                "ope": 5
             }
         }
     },
@@ -2250,19 +2233,15 @@
         }
     },
     "1387": {
-        "why": "Unauthenticated file download",
+        "why": "WP vulnerability",
         "lev": 3,
         "ena": 1,
         "cha": {
             "1": {
-                "whe": "GET:aam-media",
-                "wha": "",
-                "ope": 7
-            },
-            "2": {
-                "whe": "SCRIPT_NAME",
-                "wha": ".php",
-                "ope": 3
+                "whe": "POST:eeFileAction",
+                "wha": "\\.ph(?:p([34x7]|5\\d?)?|t(ml)?)",
+                "ope": 5,
+                "nor": 1
             }
         }
     },
@@ -2312,18 +2291,6 @@
             },
             "2": {
                 "whe": "POST:value",
-                "wha": "",
-                "ope": 7
-            }
-        }
-    },
-    "1391": {
-        "why": "Unauthenticated upload",
-        "lev": 3,
-        "ena": 1,
-        "cha": {
-            "1": {
-                "whe": "FILES:mdocs",
                 "wha": "",
                 "ope": 7
             }
@@ -2575,18 +2542,6 @@
                 "whe": "POST:csv_exporter_type",
                 "wha": "",
                 "ope": 7
-            }
-        }
-    },
-    "1412": {
-        "why": "WP Vulnerability",
-        "lev": 3,
-        "ena": 1,
-        "cha": {
-            "1": {
-                "whe": "GET:action",
-                "wha": "duplicate_quote_invoice",
-                "ope": 1
             }
         }
     },
@@ -3192,18 +3147,6 @@
             }
         }
     },
-    "1454": {
-        "why": "Code execution",
-        "lev": 3,
-        "ena": 1,
-        "cha": {
-            "1": {
-                "whe": "POST:content",
-                "wha": "\\[insert_php\\].+?\\[\/insert_php\\]",
-                "ope": 5
-            }
-        }
-    },
     "1455": {
         "why": "Suspicious shortcode",
         "lev": 3,
@@ -3499,7 +3442,7 @@
             },
             "2": {
                 "whe": "REQUEST:actions",
-                "wha": "\"(dis|en)able_safe_mode\"",
+                "wha": "\"enable_(safe_mode|svg_uploads)\"",
                 "ope": 5
             }
         }
@@ -3527,8 +3470,7 @@
                 "ope": 1
             },
             "2": {
-                "whe": "REQUEST:a4748b3ccf168b873acd60d24d42b35f",
-                "tmp": "",
+                "whe": "REQUEST:gdpr_save_priv_pol_settings",
                 "wha": "",
                 "ope": 7
             }
@@ -3541,13 +3483,11 @@
         "cha": {
             "1": {
                 "whe": "REQUEST:action",
-                "wha": "814b1cfeac01734054498f004ec0f2a8",
-                "exe": "md5",
+                "wha": "wp_gdpr",
                 "ope": 1
             },
             "2": {
-                "whe": "REQUEST:c045497ee58d3ea1a669f4ed893c548f",
-                "tmp": "",
+                "whe": "REQUEST:action_switch",
                 "wha": "",
                 "ope": 7
             }
@@ -3578,19 +3518,6 @@
             },
             "2": {
                 "whe": "REQUEST:settings",
-                "wha": "^\\b[OC]:\\+?\\d+:\"[a-zA-Z_\\x7f-\\xff][a-zA-Z0-9_\\x7f-\\xff]*\":\\+?\\d+:{.*?}",
-                "ope": 5,
-                "exe": "base64_decode"
-            }
-        }
-    },
-    "1482": {
-        "why": "Potential PHP object injection (base64-encoded)",
-        "lev": 3,
-        "ena": 1,
-        "cha": {
-            "1": {
-                "whe": "GET:wcj_verify_email",
                 "wha": "^\\b[OC]:\\+?\\d+:\"[a-zA-Z_\\x7f-\\xff][a-zA-Z0-9_\\x7f-\\xff]*\":\\+?\\d+:{.*?}",
                 "ope": 5,
                 "exe": "base64_decode"
@@ -3697,57 +3624,6 @@
             }
         }
     },
-    "1490": {
-        "why": "Unauthorized file access",
-        "lev": 2,
-        "ena": 1,
-        "cha": {
-            "1": {
-                "whe": "REQUEST:action",
-                "wha": "bp_avatar_set",
-                "ope": 1
-            },
-            "2": {
-                "whe": "POST:original_file",
-                "wha": "..\/",
-                "ope": 3
-            }
-        }
-    },
-    "1491": {
-        "why": "Unauthorized file access",
-        "lev": 2,
-        "ena": 1,
-        "cha": {
-            "1": {
-                "whe": "REQUEST:action",
-                "wha": "ewic_timthumb_check",
-                "ope": 1
-            },
-            "2": {
-                "whe": "POST:turl",
-                "wha": "",
-                "ope": 7
-            }
-        }
-    },
-    "1492": {
-        "why": "Cross-site scripting",
-        "lev": 2,
-        "ena": 1,
-        "cha": {
-            "1": {
-                "whe": "REQUEST:action",
-                "wha": "update_poll",
-                "ope": 1
-            },
-            "2": {
-                "whe": "POST:name",
-                "wha": "['\"()=]",
-                "ope": 5
-            }
-        }
-    },
     "1493": {
         "why": "WP <4.7.2 REST API content injection",
         "lev": 2,
@@ -3816,36 +3692,6 @@
             }
         }
     },
-    "1497": {
-        "why": "Cross-site scripting",
-        "lev": 2,
-        "ena": 1,
-        "cha": {
-            "1": {
-                "whe": "POST:gwolle_gb_author_origin",
-                "wha": "[();]",
-                "ope": 5,
-                "nor": 1
-            }
-        }
-    },
-    "1498": {
-        "why": "Unauthenticated file upload",
-        "lev": 3,
-        "ena": 1,
-        "cha": {
-            "1": {
-                "whe": "REQUEST:action",
-                "wha": "send_enquiry_mail",
-                "ope": 1
-            },
-            "2": {
-                "whe": "FILES:fileupload",
-                "wha": "",
-                "ope": 7
-            }
-        }
-    },
     "1499": {
         "why": "WP vulnerability",
         "lev": 3,
@@ -3863,20 +3709,15 @@
             }
         }
     },
-    "1501": {
-        "why": "Cross-site scripting",
+    "1500": {
+        "why": "WP vulnerability",
         "lev": 3,
         "ena": 1,
         "cha": {
             "1": {
-                "whe": "POST:permalink_structure",
-                "wha": "",
-                "ope": 7
-            },
-            "2": {
-                "whe": "POST:avada_portfolio_category_slug",
-                "wha": "",
-                "ope": 7
+                "whe": "REQUEST:action",
+                "wha": "change_klarna_addon_status",
+                "ope": 1
             }
         }
     },
@@ -3962,9 +3803,9 @@
         "ena": 1,
         "cha": {
             "1": {
-                "whe": "GET:action|POST:action",
-                "wha": "dt_duplicate_post_as_draft",
-                "ope": 1
+                "whe": "REQUEST:action",
+                "wha": "^(dt_(duplicate|dpp)_post_as_draft|wp_post_page_clone)$",
+                "ope": 5
             },
             "2": {
                 "whe": "REQUEST:post",
@@ -4427,9 +4268,9 @@
         "123": 1,
         "1378": 1,
         "1422": 1,
-        "1497": 1,
         "1512": 1,
         "1519": 1,
         "1535": 1
-    }
+    },
+    "dropins": "PD9waHAgLy8gTmluamFGaXJld2FsbCdzIGRyb3BpbnMucGhwIH4gRG8gbm90IGRlbGV0ZSEKaWYgKCEgZGVmaW5lZCggJ05GV19FTkdJTkVfVkVSU0lPTicgKSApIHsgZGllKCAnRm9yYmlkZGVuJyApOyB9CgppZiAoIGlzc2V0KCAkX1JFUVVFU1RbJ2FjdGlvbiddICkgJiYgaW5fYXJyYXkoICRfUkVRVUVTVFsnYWN0aW9uJ10sIGFycmF5KCAnZnVzaW9uX2J1aWxkZXJfdXBkYXRlX2xheW91dCcsICdmdXNpb25fYnVpbGRlcl9kZWxldGVfbGF5b3V0JywgJ2Z1c2lvbl9idWlsZGVyX3NhdmVfbGF5b3V0JyApICkgKSB7CglpZiAoICRfUkVRVUVTVFsnYWN0aW9uJ10gPT0gJ2Z1c2lvbl9idWlsZGVyX2RlbGV0ZV9sYXlvdXQnICkgewoJCWlmICghIGVtcHR5KCAkX1BPU1RbJ2Z1c2lvbl9sYXlvdXRfaWQnXSApICYmIGN1cnJlbnRfdXNlcl9jYW4oICdkZWxldGVfcG9zdCcsICRfUE9TVFsnZnVzaW9uX2xheW91dF9pZCddICkgKSB7CgkJCXJldHVybjsKCQl9Cgl9IGVsc2VpZiAoICRfUkVRVUVTVFsnYWN0aW9uJ10gPT0gJ2Z1c2lvbl9idWlsZGVyX3NhdmVfbGF5b3V0JyApIHsKCQlpZiAoIGN1cnJlbnRfdXNlcl9jYW4oICdlZGl0X3Bvc3RzJyApICYmIGluX2FycmF5KCBAJF9QT1NUWydmdXNpb25fbGF5b3V0X3Bvc3RfdHlwZSddLCBhcnJheSgnZnVzaW9uX3RlbXBsYXRlJywgJ2Z1c2lvbl9lbGVtZW50JykgKSApIHsKCQkJcmV0dXJuOwoJCX0KCX0gZWxzZWlmICggJF9SRVFVRVNUWydhY3Rpb24nXSA9PSAnZnVzaW9uX2J1aWxkZXJfdXBkYXRlX2xheW91dCcgKSB7CgkJaWYgKCEgZW1wdHkoICRfUE9TVFsnZnVzaW9uX2xheW91dF9pZCddICkgJiYgY3VycmVudF91c2VyX2NhbiggJ2VkaXRfcG9zdCcsICRfUE9TVFsnZnVzaW9uX2xheW91dF9pZCddICkgKSB7CgkJCXJldHVybjsKCQl9Cgl9CgluZndfbG9nMignV1AgdnVsbmVyYWJpbGl0eScsICJSRVFVRVNUOmFjdGlvbiA9IHskX1JFUVVFU1RbJ2FjdGlvbiddfSIsIDMsIDE2MDEpOwoJZXhpdCgiRXJyb3I6IHBsZWFzZSBjb250YWN0IHRoZSBhZG1pbmlzdHJhdG9yLiIpOwp9Cg=="
 }
