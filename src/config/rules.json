@@ -1793,9 +1793,9 @@
         "ena": 1,
         "cha": {
             "1": {
-                "whe": "GET",
-                "wha": "wp-config.php",
-                "ope": 3,
+                "whe": "GET|POST",
+                "wha": "\/wp-config.php$",
+                "ope": 5,
                 "nor": 1
             }
         }
@@ -1809,23 +1809,6 @@
                 "whe": "REQUEST:action",
                 "wha": "^mapp_(tpl_)?(save|delete)$",
                 "ope": 5
-            }
-        }
-    },
-    "1353": {
-        "why": "Attempt to modify options table",
-        "lev": 3,
-        "ena": 1,
-        "cha": {
-            "1": {
-                "whe": "GET:action|POST:action",
-                "wha": "wpgdprc_process_action",
-                "ope": 1
-            },
-            "2": {
-                "whe": "POST:data",
-                "wha": "",
-                "ope": 7
             }
         }
     },
@@ -2293,6 +2276,18 @@
                 "whe": "POST:value",
                 "wha": "",
                 "ope": 7
+            }
+        }
+    },
+    "1391": {
+        "why": "WP vulnerability",
+        "lev": 3,
+        "ena": 1,
+        "cha": {
+            "1": {
+                "whe": "REQUEST:action",
+                "wha": "dnd_codedropz_upload_delete",
+                "ope": 1
             }
         }
     },
@@ -2819,8 +2814,7 @@
         "cha": {
             "1": {
                 "whe": "REQUEST:action",
-                "wha": "9aab583327599e66b2d430dccb5ec42a",
-                "exe": "md5",
+                "wha": "qppr_save_quick_redirect",
                 "ope": 1
             }
         }
@@ -3442,7 +3436,7 @@
             },
             "2": {
                 "whe": "REQUEST:actions",
-                "wha": "\"enable_(safe_mode|svg_uploads)\"",
+                "wha": "\"enable_(safe_mode|svg_uploads)|pro_assets_manager_custom_icon_upload\"",
                 "ope": 5
             }
         }
@@ -3524,6 +3518,18 @@
             }
         }
     },
+    "1481": {
+        "why": "WP vulnerability",
+        "lev": 3,
+        "ena": 1,
+        "cha": {
+            "1": {
+                "whe": "GET:Action|GET:OTPAction",
+                "wha": "^(?:EWD_OTP_AddOrder|EWD_UASP_AddAppointment|UPCP_AddProduct|EWD_URP_ImportReviewsFrom)Spreadsheet$",
+                "ope": 5
+            }
+        }
+    },
     "1483": {
         "why": "WP vulnerability",
         "lev": 2,
@@ -3567,7 +3573,7 @@
         "cha": {
             "1": {
                 "whe": "REQUEST:action",
-                "wha": "^learnpress_(be_teacher|plugin_install)$",
+                "wha": "^(learnpress_(be_teacher|plugin_install)|accept-to-be-teacher)$",
                 "ope": 5
             }
         }
@@ -3621,43 +3627,6 @@
                 "whe": "REQUEST:action",
                 "wha": "^TotalSoftPoll_(Clone(?:_Set)?|Del(?:_Set)?|Edit(?:_Q_M|_Ans|_Set)?|Theme_(?:Clone|Edit1?)?)$",
                 "ope": 5
-            }
-        }
-    },
-    "1493": {
-        "why": "WP <4.7.2 REST API content injection",
-        "lev": 2,
-        "ena": 1,
-        "cha": {
-            "1": {
-                "whe": "REQUEST_URI|REQUEST:rest_route",
-                "wha": "\/wp\/v2\/posts",
-                "ope": 3,
-                "nor": 1
-            },
-            "2": {
-                "whe": "REQUEST:id",
-                "wha": "\\D",
-                "ope": 5
-            }
-        }
-    },
-    "1494": {
-        "why": "WP <4.7.2 REST API content injection",
-        "lev": 2,
-        "ena": 1,
-        "cha": {
-            "1": {
-                "whe": "REQUEST_URI|REQUEST:rest_route",
-                "wha": "\/wp\/v2\/posts",
-                "ope": 3,
-                "nor": 1
-            },
-            "2": {
-                "whe": "RAW",
-                "wha": "[{,]\"id\":\"\\d+[^\\d\"]",
-                "ope": 5,
-                "nor": 1
             }
         }
     },
@@ -3745,58 +3714,6 @@
             }
         }
     },
-    "1508": {
-        "why": "Unauthorized access",
-        "lev": 3,
-        "ena": 1,
-        "cha": {
-            "1": {
-                "whe": "SCRIPT_NAME",
-                "wha": "\/wp-admin\/admin-post.php",
-                "ope": 3
-            },
-            "2": {
-                "whe": "POST:af_options_submit",
-                "wha": "",
-                "ope": 7
-            }
-        }
-    },
-    "1510": {
-        "why": "Unauthorized file upload",
-        "lev": 3,
-        "ena": 1,
-        "cha": {
-            "1": {
-                "whe": "REQUEST:action",
-                "wha": "generate_downloadable_file",
-                "ope": 1
-            },
-            "2": {
-                "whe": "POST:format",
-                "wha": "^(?:jp|pn)g$",
-                "ope": 6,
-                "nor": 1
-            }
-        }
-    },
-    "1511": {
-        "why": "Unauthenticated file upload",
-        "lev": 3,
-        "ena": 1,
-        "cha": {
-            "1": {
-                "whe": "POST:out_fileupload",
-                "wha": "",
-                "ope": 7
-            },
-            "2": {
-                "whe": "POST:file_url",
-                "wha": "",
-                "ope": 7
-            }
-        }
-    },
     "1512": {
         "why": "SQL injection",
         "lev": 3,
@@ -3814,23 +3731,6 @@
             }
         }
     },
-    "1513": {
-        "why": "Unauthorized action",
-        "lev": 3,
-        "ena": 1,
-        "cha": {
-            "1": {
-                "whe": "GET:action",
-                "wha": "ufbl_front_form_action",
-                "ope": 1
-            },
-            "2": {
-                "whe": "GET:form_id",
-                "wha": "\\D",
-                "ope": 5
-            }
-        }
-    },
     "1515": {
         "why": "Unauthorized action",
         "lev": 3,
@@ -3840,62 +3740,6 @@
                 "whe": "GET:up_auto_log",
                 "wha": "true",
                 "ope": 1
-            }
-        }
-    },
-    "1516": {
-        "why": "Suspicious shortcode",
-        "lev": 3,
-        "ena": 1,
-        "cha": {
-            "1": {
-                "whe": "POST:before_html|POST:after_html",
-                "wha": "filter=['\"]((?!filter).)*['\"]",
-                "ope": 5,
-                "nor": 1
-            }
-        }
-    },
-    "1517": {
-        "why": "Suspicious shortcode",
-        "lev": 3,
-        "ena": 1,
-        "cha": {
-            "1": {
-                "whe": "POST:before_html|POST:after_html",
-                "wha": "\\[display-frm-data[\\s+][^\\]]*order=['\"][^'\"]*[*=()]",
-                "ope": 5,
-                "nor": 1
-            }
-        }
-    },
-    "1518": {
-        "why": "Suspicious email address",
-        "lev": 3,
-        "ena": 1,
-        "cha": {
-            "1": {
-                "whe": "POST:bbp_anonymous_email",
-                "wha": "%",
-                "ope": 3,
-                "nor": 1
-            }
-        }
-    },
-    "1519": {
-        "why": "Unauthenticated file upload",
-        "lev": 3,
-        "ena": 1,
-        "cha": {
-            "1": {
-                "whe": "POST:uploadfile",
-                "wha": "",
-                "ope": 7
-            },
-            "2": {
-                "whe": "FILES:uploadfiles",
-                "wha": "\\.ph(?:p([34x7]|5\\d?)?|t(ml)?)",
-                "ope": 5
             }
         }
     },
@@ -4269,8 +4113,7 @@
         "1378": 1,
         "1422": 1,
         "1512": 1,
-        "1519": 1,
         "1535": 1
     },
-    "dropins": "PD9waHAgLy8gTmluamFGaXJld2FsbCdzIGRyb3BpbnMucGhwIH4gRG8gbm90IGRlbGV0ZSEKaWYgKCEgZGVmaW5lZCggJ05GV19FTkdJTkVfVkVSU0lPTicgKSApIHsgZGllKCAnRm9yYmlkZGVuJyApOyB9CgppZiAoIGlzc2V0KCAkX1JFUVVFU1RbJ2FjdGlvbiddICkgJiYgaW5fYXJyYXkoICRfUkVRVUVTVFsnYWN0aW9uJ10sIGFycmF5KCAnZnVzaW9uX2J1aWxkZXJfdXBkYXRlX2xheW91dCcsICdmdXNpb25fYnVpbGRlcl9kZWxldGVfbGF5b3V0JywgJ2Z1c2lvbl9idWlsZGVyX3NhdmVfbGF5b3V0JyApICkgKSB7CglpZiAoICRfUkVRVUVTVFsnYWN0aW9uJ10gPT0gJ2Z1c2lvbl9idWlsZGVyX2RlbGV0ZV9sYXlvdXQnICkgewoJCWlmICghIGVtcHR5KCAkX1BPU1RbJ2Z1c2lvbl9sYXlvdXRfaWQnXSApICYmIGN1cnJlbnRfdXNlcl9jYW4oICdkZWxldGVfcG9zdCcsICRfUE9TVFsnZnVzaW9uX2xheW91dF9pZCddICkgKSB7CgkJCXJldHVybjsKCQl9Cgl9IGVsc2VpZiAoICRfUkVRVUVTVFsnYWN0aW9uJ10gPT0gJ2Z1c2lvbl9idWlsZGVyX3NhdmVfbGF5b3V0JyApIHsKCQlpZiAoIGN1cnJlbnRfdXNlcl9jYW4oICdlZGl0X3Bvc3RzJyApICYmIGluX2FycmF5KCBAJF9QT1NUWydmdXNpb25fbGF5b3V0X3Bvc3RfdHlwZSddLCBhcnJheSgnZnVzaW9uX3RlbXBsYXRlJywgJ2Z1c2lvbl9lbGVtZW50JykgKSApIHsKCQkJcmV0dXJuOwoJCX0KCX0gZWxzZWlmICggJF9SRVFVRVNUWydhY3Rpb24nXSA9PSAnZnVzaW9uX2J1aWxkZXJfdXBkYXRlX2xheW91dCcgKSB7CgkJaWYgKCEgZW1wdHkoICRfUE9TVFsnZnVzaW9uX2xheW91dF9pZCddICkgJiYgY3VycmVudF91c2VyX2NhbiggJ2VkaXRfcG9zdCcsICRfUE9TVFsnZnVzaW9uX2xheW91dF9pZCddICkgKSB7CgkJCXJldHVybjsKCQl9Cgl9CgluZndfbG9nMignV1AgdnVsbmVyYWJpbGl0eScsICJSRVFVRVNUOmFjdGlvbiA9IHskX1JFUVVFU1RbJ2FjdGlvbiddfSIsIDMsIDE2MDEpOwoJZXhpdCgiRXJyb3I6IHBsZWFzZSBjb250YWN0IHRoZSBhZG1pbmlzdHJhdG9yLiIpOwp9Cg=="
+    "dropins": "PD9waHAgLy8gTmluamFGaXJld2FsbCdzIGRyb3BpbnMucGhwIH4gRG8gbm90IGRlbGV0ZSEKaWYgKCEgZGVmaW5lZCggJ05GV19FTkdJTkVfVkVSU0lPTicgKSApIHsgZGllKCAnRm9yYmlkZGVuJyApOyB9CgppZiAoIGlzc2V0KCAkX1JFUVVFU1RbJ2FjdGlvbiddICkgJiYgaW5fYXJyYXkoICRfUkVRVUVTVFsnYWN0aW9uJ10sIGFycmF5KCAnZnVzaW9uX2J1aWxkZXJfdXBkYXRlX2xheW91dCcsICdmdXNpb25fYnVpbGRlcl9kZWxldGVfbGF5b3V0JywgJ2Z1c2lvbl9idWlsZGVyX3NhdmVfbGF5b3V0JyApICkgKSB7CglpZiAoICRfUkVRVUVTVFsnYWN0aW9uJ10gPT0gJ2Z1c2lvbl9idWlsZGVyX2RlbGV0ZV9sYXlvdXQnICkgewoJCWlmICghIGVtcHR5KCAkX1BPU1RbJ2Z1c2lvbl9sYXlvdXRfaWQnXSApICYmIGN1cnJlbnRfdXNlcl9jYW4oICdkZWxldGVfcG9zdCcsICRfUE9TVFsnZnVzaW9uX2xheW91dF9pZCddICkgKSB7CgkJCXJldHVybjsKCQl9Cgl9IGVsc2VpZiAoICRfUkVRVUVTVFsnYWN0aW9uJ10gPT0gJ2Z1c2lvbl9idWlsZGVyX3NhdmVfbGF5b3V0JyApIHsKCQlpZiAoIGN1cnJlbnRfdXNlcl9jYW4oICdlZGl0X3Bvc3RzJyApICYmIGluX2FycmF5KCBAJF9QT1NUWydmdXNpb25fbGF5b3V0X3Bvc3RfdHlwZSddLCBhcnJheSgnZnVzaW9uX3RlbXBsYXRlJywgJ2Z1c2lvbl9lbGVtZW50JykgKSApIHsKCQkJcmV0dXJuOwoJCX0KCX0gZWxzZWlmICggJF9SRVFVRVNUWydhY3Rpb24nXSA9PSAnZnVzaW9uX2J1aWxkZXJfdXBkYXRlX2xheW91dCcgKSB7CgkJaWYgKCEgZW1wdHkoICRfUE9TVFsnZnVzaW9uX2xheW91dF9pZCddICkgJiYgY3VycmVudF91c2VyX2NhbiggJ2VkaXRfcG9zdCcsICRfUE9TVFsnZnVzaW9uX2xheW91dF9pZCddICkgKSB7CgkJCXJldHVybjsKCQl9Cgl9CgluZndfbG9nMignV1AgdnVsbmVyYWJpbGl0eScsICJSRVFVRVNUOmFjdGlvbiA9IHskX1JFUVVFU1RbJ2FjdGlvbiddfSIsIDMsIDE2MDEpOwoJZXhpdCgiRXJyb3I6IHBsZWFzZSBjb250YWN0IHRoZSBhZG1pbmlzdHJhdG9yLiIpOwp9CmlmICggaXNzZXQoICRfUkVRVUVTVFsnYWN0aW9uJ10gKSAmJiAkX1JFUVVFU1RbJ2FjdGlvbiddID09ICd1YWVsX3JlZ2lzdGVyX3VzZXInICkgewoJaWYgKCEgZ2V0X29wdGlvbiggJ3VzZXJzX2Nhbl9yZWdpc3RlcicgKSApIHsKCQluZndfbG9nMignV1AgdnVsbmVyYWJpbGl0eScsICJSRVFVRVNUOmFjdGlvbiA9IHskX1JFUVVFU1RbJ2FjdGlvbiddfSIsIDMsIDE2MDIpOwoJCWV4aXQoIkVycm9yOiBwbGVhc2UgY29udGFjdCB0aGUgYWRtaW5pc3RyYXRvci4iKTsKCX0KfQ=="
 }
