@@ -85,5 +85,7 @@
     "admin_ajax": 1,
     "enum_restapi": 1,
     "no_restapi": 0,
-    "snapdir": ""
+    "snapdir": "",
+    "disallow_publish": 1,
+    "enum_feed": 1
 }
