@@ -1,6 +1,6 @@
 const FileSaver = require('file-saver');
-const date = '20200628';
-const filename = `nfwp.4.2.1_${date}.dat`;
+const date = '20200910';
+const filename = `nfwp.4.2.4_${date}.dat`;
 const configData = `###CONFIG###
 :-:
 ###RULES###
