@@ -6,7 +6,7 @@
         "cha": {
             "1": {
                 "whe": "GET|COOKIE|HTTP_USER_AGENT|PHP_SELF|PATH_INFO",
-                "wha": "(?:\\.{2}[\\\/]+){2}\\b[a-zA-Z]",
+                "wha": "(?:\\.{2}[\\\\\/]+){2}\\b[a-zA-Z]",
                 "ope": 5,
                 "nor": 1,
                 "tra": 3
@@ -1170,7 +1170,7 @@
         "cha": {
             "1": {
                 "whe": "SCRIPT_NAME",
-                "wha": "[^\/]\\.ph(?:p([34x7]|5\\d?)?|t(ml)?)\\.",
+                "wha": "[^\/]\\.(?:ph(?:p([34x7]|5\\d?)?|t(ml)?|ar)|html)\\b\\.",
                 "ope": 5
             }
         }
@@ -1309,7 +1309,7 @@
         "cha": {
             "1": {
                 "whe": "SCRIPT_NAME",
-                "wha": "\/\\.[^\/]+\\.ph(?:p([34x7]|5\\d?)?|t(ml)?)",
+                "wha": "\/\\.[^\/]+\\.(?:ph(?:p([34x7]|5\\d?)?|t(ml)?|ar)|html)\\b",
                 "ope": 5
             }
         }
@@ -1379,6 +1379,18 @@
             "1": {
                 "whe": "GET|POST",
                 "wha": "(^|\\S['\"])nfw_(?:options|rules)\\b",
+                "ope": 5
+            }
+        }
+    },
+    "323": {
+        "why": "Proxy attempt",
+        "lev": 2,
+        "ena": 1,
+        "cha": {
+            "1": {
+                "whe": "REQUEST_URI",
+                "wha": "^\/%EF%BB%BFhttps?:\/",
                 "ope": 5
             }
         }
@@ -1648,18 +1660,6 @@
             }
         }
     },
-    "1006": {
-        "why": "TimThumb WebShot Remote Code Execution",
-        "lev": 3,
-        "ena": 1,
-        "cha": {
-            "1": {
-                "whe": "GET:src",
-                "wha": "$",
-                "ope": 3
-            }
-        }
-    },
     "1007": {
         "why": "phpMyAdmin hacking attempt",
         "lev": 2,
@@ -1681,23 +1681,6 @@
                 "whe": "SCRIPT_NAME",
                 "wha": "\/uploadify.php",
                 "ope": 3
-            }
-        }
-    },
-    "1014": {
-        "why": "Potential Remote File inclusion",
-        "lev": 3,
-        "ena": 1,
-        "cha": {
-            "1": {
-                "whe": "SCRIPT_NAME",
-                "wha": "(?:thumb|img)\\.php",
-                "ope": 5
-            },
-            "2": {
-                "whe": "GET:src",
-                "wha": "\\.(?:png|gif|jpe?g|jf?if|svg)$",
-                "ope": 6
             }
         }
     },
@@ -1762,7 +1745,7 @@
             },
             "2": {
                 "whe": "FILES:upload-file",
-                "wha": "\\.ph(?:p([34x7]|5\\d?)?|t(ml)?)",
+                "wha": "\\.(?:ph(?:p([34x7]|5\\d?)?|t(ml)?|ar)|html)\\b",
                 "ope": 5
             }
         }
@@ -1788,18 +1771,6 @@
             "1": {
                 "whe": "REQUEST:action",
                 "wha": "import_widget_data",
-                "ope": 1
-            }
-        }
-    },
-    "1358": {
-        "why": "WP vulnerability",
-        "lev": 2,
-        "ena": 1,
-        "cha": {
-            "1": {
-                "whe": "REQUEST:action",
-                "wha": "gallery_bank_ftp_directory",
                 "ope": 1
             }
         }
@@ -1836,33 +1807,60 @@
         "ena": 1,
         "cha": {
             "1": {
-                "whe": "REQUEST:action",
-                "wha": "gdpr_cookie_compliance_reset_settings",
+                "whe": "POST:tccj-update",
+                "wha": "Update",
                 "ope": 1
+            },
+            "2": {
+                "whe": "POST:tccj-content",
+                "wha": "",
+                "ope": 7
             }
         }
     },
     "1362": {
         "why": "WP vulnerability",
-        "lev": 2,
-        "ena": 1,
-        "cha": {
-            "1": {
-                "whe": "REQUEST:action",
-                "wha": "eps_redirect_",
-                "ope": 3
-            }
-        }
-    },
-    "1364": {
-        "why": "Suspicious authentication attempt",
         "lev": 3,
         "ena": 1,
         "cha": {
             "1": {
-                "whe": "RAW",
-                "wha": "(?:\\bIWP_JSON_PREFIX|IWP_JSON_PREFIX\\b)",
-                "ope": 5
+                "whe": "GET:page",
+                "wha": "wp-export-users",
+                "ope": 1
+            }
+        }
+    },
+    "1363": {
+        "why": "WP Vulnerability",
+        "lev": 3,
+        "ena": 1,
+        "cha": {
+            "1": {
+                "whe": "POST:wpcr3_f1|POST:wpcr3_f2|POST:wpcr3_f3",
+                "wha": "\"",
+                "ope": 3
+            },
+            "2": {
+                "whe": "REQUEST:action",
+                "wha": "wpcr3-ajax",
+                "ope": 1
+            }
+        }
+    },
+    "1364": {
+        "why": "WP Vulnerability",
+        "lev": 3,
+        "ena": 1,
+        "cha": {
+            "1": {
+                "whe": "REQUEST:action",
+                "wha": "wdr_ajax",
+                "ope": 1
+            },
+            "2": {
+                "whe": "POST:method",
+                "wha": "get_price_html",
+                "ope": 2
             }
         }
     },
@@ -1872,9 +1870,9 @@
         "ena": 1,
         "cha": {
             "1": {
-                "whe": "REQUEST:db-reset-tables",
-                "wha": "",
-                "ope": 7
+                "whe": "REQUEST:action",
+                "wha": "^wp_ajax_try_2020_v",
+                "ope": 5
             }
         }
     },
@@ -1891,13 +1889,18 @@
         }
     },
     "1367": {
-        "why": "Unauthenticated access",
-        "lev": 2,
+        "why": "WP Vulnerability",
+        "lev": 3,
         "ena": 1,
         "cha": {
             "1": {
                 "whe": "REQUEST:action",
-                "wha": "^(make_batch_feed|save_feed_file)$",
+                "wha": "et_core_portability_import",
+                "ope": 1
+            },
+            "2": {
+                "whe": "FILES:file",
+                "wha": "\\.(?:ph(?:p([34x7]|5\\d?)?|t(ml)?|ar)|html)\\b",
                 "ope": 5
             }
         }
@@ -1910,18 +1913,6 @@
             "1": {
                 "whe": "REQUEST:action",
                 "wha": "my_wpc_fetch_authkey",
-                "ope": 1
-            }
-        }
-    },
-    "1369": {
-        "why": "Unauthorized access",
-        "lev": 3,
-        "ena": 1,
-        "cha": {
-            "1": {
-                "whe": "REQUEST:action",
-                "wha": "wfpklist_customizer_save_theme",
                 "ope": 1
             }
         }
@@ -1963,14 +1954,19 @@
         }
     },
     "1373": {
-        "why": "WP vulnerability (CVE-2019-16251)",
-        "lev": 3,
+        "why": "WP-VCD backdoor",
+        "lev": 2,
         "ena": 1,
         "cha": {
             "1": {
+                "whe": "REQUEST:password",
+                "wha": "",
+                "ope": 7
+            },
+            "2": {
                 "whe": "REQUEST:action",
-                "wha": "yith_plugin_fw_save_toggle_element",
-                "ope": 1
+                "wha": "^change_(domain|code)$",
+                "ope": 5
             }
         }
     },
@@ -2023,14 +2019,14 @@
         }
     },
     "1378": {
-        "why": "WP vulnerability",
+        "why": "WP Vulnerability",
         "lev": 3,
         "ena": 1,
         "cha": {
             "1": {
-                "whe": "GET:page",
-                "wha": "import-snippets",
-                "ope": 1
+                "whe": "SCRIPT_NAME",
+                "wha": "\/wp-file-manager\/lib\/",
+                "ope": 3
             }
         }
     },
@@ -2149,7 +2145,7 @@
         "cha": {
             "1": {
                 "whe": "POST:eeFileAction",
-                "wha": "\\.ph(?:p([34x7]|5\\d?)?|t(ml)?)",
+                "wha": "\\.(?:ph(?:p([34x7]|5\\d?)?|t(ml)?|ar)|html)\\b",
                 "ope": 5,
                 "nor": 1
             }
@@ -2219,14 +2215,14 @@
         }
     },
     "1392": {
-        "why": "Unauthenticated XSS",
+        "why": "WP Vulnerability",
         "lev": 3,
         "ena": 1,
         "cha": {
             "1": {
-                "whe": "GET:page",
-                "wha": "opinionstage-content-login-callback-page",
-                "ope": 1
+                "whe": "SCRIPT_NAME",
+                "wha": "\/connector.minimal.php",
+                "ope": 3
             }
         }
     },
@@ -2239,64 +2235,6 @@
                 "whe": "POST:dpc_save_settings",
                 "wha": "",
                 "ope": 7
-            }
-        }
-    },
-    "1395": {
-        "why": "WP vulnerability (CVE-2019-17234)",
-        "lev": 3,
-        "ena": 1,
-        "cha": {
-            "1": {
-                "whe": "POST:delete_template",
-                "wha": "",
-                "ope": 7
-            }
-        }
-    },
-    "1396": {
-        "why": "WP vulnerability (CVE-2019-17235)",
-        "lev": 3,
-        "ena": 1,
-        "cha": {
-            "1": {
-                "whe": "GET:rockython_createcsv|GET:rockython_createbcc",
-                "wha": "",
-                "ope": 7
-            }
-        }
-    },
-    "1397": {
-        "why": "WP vulnerability (CVE-2019-17236)",
-        "lev": 3,
-        "ena": 1,
-        "cha": {
-            "1": {
-                "whe": "REQUEST:contact_message|REQUEST:contact_name",
-                "wha": "<",
-                "ope": 3
-            },
-            "2": {
-                "whe": "REQUEST:action",
-                "wha": "contact_form",
-                "ope": 1
-            }
-        }
-    },
-    "1398": {
-        "why": "WP vulnerability (CVE-2019-17236)",
-        "lev": 3,
-        "ena": 1,
-        "cha": {
-            "1": {
-                "whe": "REQUEST:action",
-                "wha": "subscribe_email",
-                "ope": 1
-            },
-            "2": {
-                "whe": "REQUEST:cs_name",
-                "wha": "<",
-                "ope": 3
             }
         }
     },
@@ -2337,26 +2275,31 @@
         }
     },
     "1402": {
-        "why": "WP vulnerability (CVE-2019-17228)",
+        "why": "WP vulnerability",
         "lev": 3,
         "ena": 1,
         "cha": {
             "1": {
                 "whe": "REQUEST:action",
-                "wha": "^stm_listings_(save_single_option_row|delete_single_option_row|save_option_order|add_new_option)$",
-                "ope": 5
+                "wha": "connector",
+                "ope": 1
+            },
+            "2": {
+                "whe": "REQUEST:cmd",
+                "wha": "",
+                "ope": 7
             }
         }
     },
     "1403": {
-        "why": "WP vulnerability (CVE-2019-17228)",
+        "why": "WP vulnerability",
         "lev": 3,
         "ena": 1,
         "cha": {
             "1": {
-                "whe": "GET:export_settings",
-                "wha": "",
-                "ope": 7
+                "whe": "REQUEST:action",
+                "wha": "nxs_snap_aj",
+                "ope": 1
             }
         }
     },
@@ -2640,7 +2583,7 @@
             },
             "2": {
                 "whe": "FILES:file",
-                "wha": "\\.ph(?:p([34x7]|5\\d?)?|t(ml)?)",
+                "wha": "\\.(?:ph(?:p([34x7]|5\\d?)?|t(ml)?|ar)|html)\\b",
                 "ope": 5
             }
         }
@@ -2657,7 +2600,7 @@
             },
             "2": {
                 "whe": "FILES:async-upload",
-                "wha": "\\.ph(?:p([34x7]|5\\d?)?|t(ml)?)",
+                "wha": "\\.(?:ph(?:p([34x7]|5\\d?)?|t(ml)?|ar)|html)\\b",
                 "ope": 5
             }
         }
@@ -3006,7 +2949,7 @@
             },
             "2": {
                 "whe": "FILES:user-submitted-image",
-                "wha": "\\.ph(?:p([34x7]|5\\d?)?|t(ml)?)",
+                "wha": "\\.(?:ph(?:p([34x7]|5\\d?)?|t(ml)?|ar)|html)\\b",
                 "ope": 5
             }
         }
@@ -3018,7 +2961,7 @@
         "cha": {
             "1": {
                 "whe": "FILES",
-                "wha": "\\.ph(?:p([34x7]|5\\d?)?|t(ml)?)",
+                "wha": "\\.(?:ph(?:p([34x7]|5\\d?)?|t(ml)?|ar)|html)\\b",
                 "ope": 5
             },
             "2": {
@@ -3035,7 +2978,7 @@
         "cha": {
             "1": {
                 "whe": "FILES",
-                "wha": "\\.ph(?:p([34x7]|5\\d?)?|t(ml)?)",
+                "wha": "\\.(?:ph(?:p([34x7]|5\\d?)?|t(ml)?|ar)|html)\\b",
                 "ope": 5
             },
             "2": {
@@ -3057,7 +3000,7 @@
             },
             "2": {
                 "whe": "FILES:file",
-                "wha": "\\.ph(?:p([34x7]|5\\d?)?|t(ml)?)",
+                "wha": "\\.(?:ph(?:p([34x7]|5\\d?)?|t(ml)?|ar)|html)\\b",
                 "ope": 5
             }
         }
@@ -3069,8 +3012,7 @@
         "cha": {
             "1": {
                 "whe": "REQUEST:action",
-                "wha": "89e2ab0a64b73382152bb21ad6f7bf50",
-                "exe": "md5",
+                "wha": "wfu_ajax_action_ask_server",
                 "ope": 1
             },
             "2": {
@@ -3212,18 +3154,6 @@
                 "whe": "REQUEST:action",
                 "wha": "companion_disable_popup",
                 "ope": 1
-            }
-        }
-    },
-    "1464": {
-        "why": "Unauthorized access",
-        "lev": 3,
-        "ena": 1,
-        "cha": {
-            "1": {
-                "whe": "REQUEST:action",
-                "wha": "^mk_file_manager_(?:backup_remove|single_backup_(?:remove|restore|logs))$",
-                "ope": 5
             }
         }
     },
@@ -3501,8 +3431,8 @@
         "cha": {
             "1": {
                 "whe": "POST:log",
-                "wha": "foxilitrix",
-                "ope": 4
+                "wha": "^(foxilitrix|system_not_delete_|admin_sweet|AnonymousFox)",
+                "ope": 5
             }
         }
     },
@@ -3696,6 +3626,35 @@
             }
         }
     },
+    "1498": {
+        "why": "WP vulnerability",
+        "lev": 3,
+        "ena": 1,
+        "cha": {
+            "1": {
+                "whe": "REQUEST:action",
+                "wha": "_ning_upload_image",
+                "ope": 1
+            }
+        }
+    },
+    "1499": {
+        "why": "WP vulnerability",
+        "lev": 3,
+        "ena": 1,
+        "cha": {
+            "1": {
+                "whe": "REQUEST:action",
+                "wha": "st_filter_tour_ajax_location",
+                "ope": 1
+            },
+            "2": {
+                "whe": "GET:id_location",
+                "wha": "\\D",
+                "ope": 5
+            }
+        }
+    },
     "1500": {
         "why": "WP vulnerability",
         "lev": 3,
@@ -3732,6 +3691,132 @@
             }
         }
     },
+    "1504": {
+        "why": "WP vulnerability",
+        "lev": 3,
+        "ena": 1,
+        "cha": {
+            "1": {
+                "whe": "REQUEST:action",
+                "wha": "qsm_upload_image_fd_question",
+                "ope": 1
+            },
+            "2": {
+                "whe": "FILES:file",
+                "wha": "\\.(?:ph(?:p([34x7]|5\\d?)?|t(ml)?|ar)|html)\\b",
+                "ope": 5
+            }
+        }
+    },
+    "1505": {
+        "why": "WP vulnerability",
+        "lev": 3,
+        "ena": 1,
+        "cha": {
+            "1": {
+                "whe": "REQUEST:action",
+                "wha": "qsm_remove_file_fd_question",
+                "ope": 1
+            },
+            "2": {
+                "whe": "POST:file_url",
+                "wha": "^qsmfileupload_",
+                "ope": 6
+            }
+        }
+    },
+    "1506": {
+        "why": "WP vulnerability",
+        "lev": 3,
+        "ena": 1,
+        "cha": {
+            "1": {
+                "whe": "GET:alg_wc_pif_download_file",
+                "wha": "\\.[\\\\\/]",
+                "ope": 5,
+                "tra": 3
+            }
+        }
+    },
+    "1507": {
+        "why": "WP vulnerability",
+        "lev": 3,
+        "ena": 1,
+        "cha": {
+            "1": {
+                "whe": "REQUEST:action",
+                "wha": "kaliforms_form_delete_uploaded_file",
+                "ope": 1
+            }
+        }
+    },
+    "1508": {
+        "why": "WP vulnerability",
+        "lev": 3,
+        "ena": 1,
+        "cha": {
+            "1": {
+                "whe": "REQUEST:action",
+                "wha": "kaliforms_update_option_ajax",
+                "ope": 1
+            }
+        }
+    },
+    "1509": {
+        "why": "WP vulnerability",
+        "lev": 3,
+        "ena": 1,
+        "cha": {
+            "1": {
+                "whe": "REQUEST:action",
+                "wha": "764de9f0293d3b22dc80afe67679fbb3",
+                "exe": "md5",
+                "ope": 1
+            },
+            "2": {
+                "whe": "FILES:b056180f5d099d486eaecb22b65d46b7",
+                "tmp": "",
+                "wha": "",
+                "ope": 7
+            }
+        }
+    },
+    "1510": {
+        "why": "WP vulnerability",
+        "lev": 3,
+        "ena": 1,
+        "cha": {
+            "1": {
+                "whe": "REQUEST:action",
+                "wha": "1f5fa7d964c9dc72a10e28f35e578d18",
+                "exe": "md5",
+                "ope": 1
+            },
+            "2": {
+                "whe": "FILES:b056180f5d099d486eaecb22b65d46b7",
+                "tmp": "",
+                "wha": "",
+                "ope": 7
+            }
+        }
+    },
+    "1511": {
+        "why": "WP vulnerability",
+        "lev": 3,
+        "ena": 1,
+        "cha": {
+            "1": {
+                "whe": "FILES",
+                "wha": "\\.(?:ph(?:p([34x7]|5\\d?)?|t(ml)?|ar)|html)\\b",
+                "ope": 5
+            },
+            "2": {
+                "whe": "REQUEST:action",
+                "wha": "wmuUploadFiles",
+                "ope": 1
+            }
+        }
+    },
     "1512": {
         "why": "SQL injection",
         "lev": 3,
@@ -3746,18 +3831,6 @@
                 "whe": "REQUEST:post",
                 "wha": "\\D",
                 "ope": 5
-            }
-        }
-    },
-    "1515": {
-        "why": "Unauthorized action",
-        "lev": 3,
-        "ena": 1,
-        "cha": {
-            "1": {
-                "whe": "GET:up_auto_log",
-                "wha": "true",
-                "ope": 1
             }
         }
     },
@@ -3793,23 +3866,6 @@
                 "wha": "\\.\\.\/+\\.\\.\/",
                 "ope": 5,
                 "nor": 1
-            }
-        }
-    },
-    "1525": {
-        "why": "Unauthorized file deletion",
-        "lev": 2,
-        "ena": 1,
-        "cha": {
-            "1": {
-                "whe": "POST:action",
-                "wha": "delete_export_file",
-                "ope": 1
-            },
-            "2": {
-                "whe": "POST:filename",
-                "wha": "",
-                "ope": 7
             }
         }
     },
@@ -3902,7 +3958,7 @@
         "cha": {
             "1": {
                 "whe": "FILES",
-                "wha": "\\.ph(?:p([34x7]|5\\d?)?|t(ml)?)",
+                "wha": "\\.(?:ph(?:p([34x7]|5\\d?)?|t(ml)?|ar)|html)\\b",
                 "ope": 5
             },
             "2": {
@@ -4076,10 +4132,9 @@
         "114": 1,
         "118": 1,
         "123": 1,
-        "1378": 1,
         "1422": 1,
         "1512": 1,
         "1535": 1
     },
-    "dropins": "PD9waHAgLy8gTmluamFGaXJld2FsbCdzIGRyb3BpbnMucGhwIH4gRG8gbm90IGRlbGV0ZSEKaWYgKCEgZGVmaW5lZCggJ05GV19FTkdJTkVfVkVSU0lPTicgKSApIHsgZGllKCAnRm9yYmlkZGVuJyApOyB9Ci8vIC0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLQppZiAoIGlzc2V0KCAkX1JFUVVFU1RbJ2FjdGlvbiddICkgKSB7CgoJaWYgKCBpc19zdXBlcl9hZG1pbigpICkgeyByZXR1cm47IH0KCglpZiAoIGluX2FycmF5KCAkX1JFUVVFU1RbJ2FjdGlvbiddLCBhcnJheSggJ2Z1c2lvbl9idWlsZGVyX3VwZGF0ZV9sYXlvdXQnLCAnZnVzaW9uX2J1aWxkZXJfZGVsZXRlX2xheW91dCcsICdmdXNpb25fYnVpbGRlcl9zYXZlX2xheW91dCcgKSApICkgewoJCWlmICggJF9SRVFVRVNUWydhY3Rpb24nXSA9PSAnZnVzaW9uX2J1aWxkZXJfZGVsZXRlX2xheW91dCcgKSB7CgkJCWlmICghIGVtcHR5KCAkX1BPU1RbJ2Z1c2lvbl9sYXlvdXRfaWQnXSApICYmIGN1cnJlbnRfdXNlcl9jYW4oICdkZWxldGVfcG9zdCcsICRfUE9TVFsnZnVzaW9uX2xheW91dF9pZCddICkgKSB7CgkJCQlyZXR1cm47CgkJCX0KCQl9IGVsc2VpZiAoICRfUkVRVUVTVFsnYWN0aW9uJ10gPT0gJ2Z1c2lvbl9idWlsZGVyX3NhdmVfbGF5b3V0JyApIHsKCQkJaWYgKCBjdXJyZW50X3VzZXJfY2FuKCAnZWRpdF9wb3N0cycgKSAmJiBpbl9hcnJheSggQCRfUE9TVFsnZnVzaW9uX2xheW91dF9wb3N0X3R5cGUnXSwgYXJyYXkoJ2Z1c2lvbl90ZW1wbGF0ZScsICdmdXNpb25fZWxlbWVudCcpICkgKSB7CgkJCQlyZXR1cm47CgkJCX0KCQl9IGVsc2VpZiAoICRfUkVRVUVTVFsnYWN0aW9uJ10gPT0gJ2Z1c2lvbl9idWlsZGVyX3VwZGF0ZV9sYXlvdXQnICkgewoJCQlpZiAoISBlbXB0eSggJF9QT1NUWydmdXNpb25fbGF5b3V0X2lkJ10gKSAmJiBjdXJyZW50X3VzZXJfY2FuKCAnZWRpdF9wb3N0JywgJF9QT1NUWydmdXNpb25fbGF5b3V0X2lkJ10gKSApIHsKCQkJCXJldHVybjsKCQkJfQoJCX0KCQluZndfZHJvcGluX2Jsb2NrKCAiUkVRVUVTVDphY3Rpb24gPSB7JF9SRVFVRVNUWydhY3Rpb24nXX0iLCAzLCAxNjAxKTsKCgl9IGVsc2VpZiAoICRfUkVRVUVTVFsnYWN0aW9uJ10gPT0gJ3VhZWxfcmVnaXN0ZXJfdXNlcicgKSB7CgkJaWYgKCEgZ2V0X29wdGlvbiggJ3VzZXJzX2Nhbl9yZWdpc3RlcicgKSApIHsKCQkJbmZ3X2Ryb3Bpbl9ibG9jayggIlJFUVVFU1Q6YWN0aW9uID0geyRfUkVRVUVTVFsnYWN0aW9uJ119IiwgMywgMTYwMiApOwoJCX0KCS8vIDIwMjAtMDUtMjgKCX0gZWxzZWlmICggJF9SRVFVRVNUWydhY3Rpb24nXSA9PSAncGFnZWxheWVyX3NhdmVfY29udGVudCcgKSB7CgkJaWYgKCEgZW1wdHkoICRfR0VUWydwb3N0SUQnXSApICkgewoJCQlpZiAoIG5md19jYW5fZWRpdCggJF9HRVRbJ3Bvc3RJRCddICkgPT0gdHJ1ZSApIHsKCQkJCXJldHVybjsKCQkJfQoJCQluZndfZHJvcGluX2Jsb2NrKCAiUkVRVUVTVDphY3Rpb24gPSB7JF9SRVFVRVNUWydhY3Rpb24nXX0iLCAzLCAxNjAzICk7CgkJfQoKCX0gZWxzZSB7CgkJJG5md19hY3RfaGFzaCA9IHNoYTEoICRfUkVRVUVTVFsnYWN0aW9uJ10gKTsKCgkJLy8gMjAyMC0wNS0yOQoJCWlmICggaW5fYXJyYXkoICRuZndfYWN0X2hhc2gsIGFycmF5KCAnYmJkNTIwZGI0ZWEyY2UzN2I2YzY0M2E0NWVjNDFlZTdkMzQ0MmQxMycsICc3ZDFmMzMxYzJhMjM5MDBlNmU4ZGQxNDlhODRjNTgzNzU4OTRmYWZkJyApICkgKSB7CgkJCWlmICggY3VycmVudF91c2VyX2NhbignbWFuYWdlX29wdGlvbnMnKSApIHsKCQkJCXJldHVybjsKCQkJfQoJCQluZndfZHJvcGluX2Jsb2NrKCAiUkVRVUVTVDphY3Rpb24gPSB7JF9SRVFVRVNUWydhY3Rpb24nXX0iLCAzLCAxNjA0ICk7CgkJfSBlbHNlaWYgKCAkbmZ3X2FjdF9oYXNoID09ICdmZmMyMzZlZWUzMDVmZTk1OTIyZjI1MTIyNzE4MmIxMTE5ZDU1ZDhhJyAmJiBpc3NldCggJF9QT1NUWydpZCddICkgKSB7CgkJCWlmICggbmZ3X2Nhbl9lZGl0KCAkX1BPU1RbJ2lkJ10gKSA9PSB0cnVlICkgewoJCQkJcmV0dXJuOwoJCQl9CgkJCW5md19kcm9waW5fYmxvY2soICJSRVFVRVNUOmFjdGlvbiA9IHskX1JFUVVFU1RbJ2FjdGlvbiddfSIsIDMsIDE2MDUgKTsKCgkJLy8gMjAyMC0wNS0yOQoJCX0gZWxzZWlmICggaW5fYXJyYXkoICRuZndfYWN0X2hhc2gsIGFycmF5KCAnNTViNmQ3ODdlNThmZDQ3M2M1MTIyYmE4MmViMzU5MThmMTk4M2VmYicsICcwYjcxZDkxYzM0NDkxMWE5YWZhMTc4ZTBhY2NmOWE4NWY0NzllNWM3JywgJzc0MGYxOWM3YzI2ZDAxMmQ5YWVkZjJlZTJlNTE1NWFkYWQ4YzczNDcnLCAnOTYzMzM5MWRjMTI3OWUxMzgwNDhlNDg1YmEzYzBlODY0MTlhYzUxOScsICc3Y2EwYzhjN2IyMTlkNDNkZGRmNzhkZjQyYWRhMDFkNjUxODg4YjZkJywgJ2M2MjI4ZWIxNDQ3Zjk5ZDc3ZWNlMGUwOWI3ZTY2ZTQ4ZWE3MGQ3NjEnLCAnNTA5NWY4YzlkYTM2YWU4MzUzNWM4OWEzYjVlY2UyMzlmOGM4MDE5NycsCgkJJ2FjMTgzNGEzYTNlYWI3OTVhYTNjZTZlOTQwNTJhNGFmNzJjNmE4NzMnLCAnZDNlN2M2Y2U2MDg4ZjIwZTUzMWEyYWQ4ZWFhNzEzYmM4N2JmOTExMycgKSApICkgewoJCQlpZiAoIGN1cnJlbnRfdXNlcl9jYW4oJ2JyaXp5X2VkaXRfd2hvbGVfcGFnZScpIHx8IGN1cnJlbnRfdXNlcl9jYW4oJ2JyaXp5X2VkaXRfY29udGVudF9vbmx5JykgKSB7CgkJCQlyZXR1cm47CgkJCX0KCQkJbmZ3X2Ryb3Bpbl9ibG9jayggIlJFUVVFU1Q6YWN0aW9uID0geyRfUkVRVUVTVFsnYWN0aW9uJ119IiwgMywgMTYwNik7CgoJCS8vIDIwMjAtMDYtMDQKCQl9IGVsc2VpZiAoIGluX2FycmF5KCAkbmZ3X2FjdF9oYXNoLCBhcnJheSggJzkyYjIyZDlmYjFjYmVlNzU5MzhlYjg4MzExMzJhODJkZDhkMTNkYmQnLCAnMGNiZTBiZGQ1MDE0Yjc0MDA1MzhlYzNmN2YyYTk2NjdkZjhjYmVkZScsICdjMjY5MGFiMjhjYWNlZDI4OTA4MTIxYmNlNjdjZGQ2MjdkMzVhNzM0JyApICkgKSB7CgkJCW5md19kcm9waW5fYmxvY2soICJSRVFVRVNUOmFjdGlvbiA9IHskX1JFUVVFU1RbJ2FjdGlvbiddfSIsIDMsIDE2MDcpOwoKCQl9Cgl9Cn0KLy8gLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tCmZ1bmN0aW9uIG5md19kcm9waW5fYmxvY2soICRtZXNzYWdlLCAkbGV2ZWwsICRydWxlICkgewoJbmZ3X2xvZzIoJ1dQIHZ1bG5lcmFiaWxpdHknLCAkbWVzc2FnZSwgJGxldmVsLCAkcnVsZSk7CglleGl0KCJFcnJvcjogcGxlYXNlIGNvbnRhY3QgdGhlIGFkbWluaXN0cmF0b3IuIik7Cn0KLy8gLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tCmZ1bmN0aW9uIG5md19jYW5fZWRpdCggJHBvc3RpZCApIHsKCSR0eXBlID0gZ2V0X3Bvc3RfdHlwZSggKGludCkgJHBvc3RpZCApOwoJaWYgKCAoICR0eXBlID09ICdwYWdlJyB8fCAkdHlwZSA9PSAncG9zdCcgKSAmJiAhIGN1cnJlbnRfdXNlcl9jYW4oICJlZGl0X3skdHlwZX0iLCAkcG9zdGlkICkgKSB7CgkJcmV0dXJuIGZhbHNlOwoJfQoJcmV0dXJuIHRydWU7Cn0KLy8gLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tCg=="
+    "dropins": "PD9waHAgLy8gTmluamFGaXJld2FsbCdzIGRyb3BpbnMucGhwIH4gRG8gbm90IGRlbGV0ZSEKaWYgKCEgZGVmaW5lZCggJ05GV19FTkdJTkVfVkVSU0lPTicgKSApIHsgZGllKCAnRm9yYmlkZGVuJyApOyB9Ci8vIC0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLQppZiAoIGlzc2V0KCAkX1JFUVVFU1RbJ2FjdGlvbiddICkgKSB7CgoJaWYgKCBpc19zdXBlcl9hZG1pbigpICkgeyByZXR1cm47IH0KCglpZiAoIGluX2FycmF5KCAkX1JFUVVFU1RbJ2FjdGlvbiddLCBhcnJheSggJ2Z1c2lvbl9idWlsZGVyX3VwZGF0ZV9sYXlvdXQnLCAnZnVzaW9uX2J1aWxkZXJfZGVsZXRlX2xheW91dCcsICdmdXNpb25fYnVpbGRlcl9zYXZlX2xheW91dCcgKSApICkgewoJCWlmICggJF9SRVFVRVNUWydhY3Rpb24nXSA9PSAnZnVzaW9uX2J1aWxkZXJfZGVsZXRlX2xheW91dCcgKSB7CgkJCWlmICghIGVtcHR5KCAkX1BPU1RbJ2Z1c2lvbl9sYXlvdXRfaWQnXSApICYmIGN1cnJlbnRfdXNlcl9jYW4oICdkZWxldGVfcG9zdCcsICRfUE9TVFsnZnVzaW9uX2xheW91dF9pZCddICkgKSB7CgkJCQlyZXR1cm47CgkJCX0KCQl9IGVsc2VpZiAoICRfUkVRVUVTVFsnYWN0aW9uJ10gPT0gJ2Z1c2lvbl9idWlsZGVyX3NhdmVfbGF5b3V0JyApIHsKCQkJaWYgKCBjdXJyZW50X3VzZXJfY2FuKCAnZWRpdF9wb3N0cycgKSAmJiBpbl9hcnJheSggQCRfUE9TVFsnZnVzaW9uX2xheW91dF9wb3N0X3R5cGUnXSwgYXJyYXkoJ2Z1c2lvbl90ZW1wbGF0ZScsICdmdXNpb25fZWxlbWVudCcpICkgKSB7CgkJCQlyZXR1cm47CgkJCX0KCQl9IGVsc2VpZiAoICRfUkVRVUVTVFsnYWN0aW9uJ10gPT0gJ2Z1c2lvbl9idWlsZGVyX3VwZGF0ZV9sYXlvdXQnICkgewoJCQlpZiAoISBlbXB0eSggJF9QT1NUWydmdXNpb25fbGF5b3V0X2lkJ10gKSAmJiBjdXJyZW50X3VzZXJfY2FuKCAnZWRpdF9wb3N0JywgJF9QT1NUWydmdXNpb25fbGF5b3V0X2lkJ10gKSApIHsKCQkJCXJldHVybjsKCQkJfQoJCX0KCQluZndfZHJvcGluX2Jsb2NrKCAiUkVRVUVTVDphY3Rpb24gPSB7JF9SRVFVRVNUWydhY3Rpb24nXX0iLCAzLCAxNjAxKTsKCgl9IGVsc2VpZiAoICRfUkVRVUVTVFsnYWN0aW9uJ10gPT0gJ3VhZWxfcmVnaXN0ZXJfdXNlcicgKSB7CgkJaWYgKCEgZ2V0X29wdGlvbiggJ3VzZXJzX2Nhbl9yZWdpc3RlcicgKSApIHsKCQkJbmZ3X2Ryb3Bpbl9ibG9jayggIlJFUVVFU1Q6YWN0aW9uID0geyRfUkVRVUVTVFsnYWN0aW9uJ119IiwgMywgMTYwMiApOwoJCX0KCS8vIDIwMjAtMDUtMjgKCX0gZWxzZWlmICggJF9SRVFVRVNUWydhY3Rpb24nXSA9PSAncGFnZWxheWVyX3NhdmVfY29udGVudCcgKSB7CgkJaWYgKCEgZW1wdHkoICRfR0VUWydwb3N0SUQnXSApICkgewoJCQlpZiAoIG5md19kcm9waW5fY2FuX2VkaXRfcG9zdCggJF9HRVRbJ3Bvc3RJRCddICkgPT0gdHJ1ZSApIHsKCQkJCXJldHVybjsKCQkJfQoJCQluZndfZHJvcGluX2Jsb2NrKCAiUkVRVUVTVDphY3Rpb24gPSB7JF9SRVFVRVNUWydhY3Rpb24nXX0iLCAzLCAxNjAzICk7CgkJfQoKCX0gZWxzZSB7CgkJJG5md19hY3RfaGFzaCA9IHNoYTEoICRfUkVRVUVTVFsnYWN0aW9uJ10gKTsKCgkJLy8gMjAyMC0wNS0yOQoJCWlmICggaW5fYXJyYXkoICRuZndfYWN0X2hhc2gsIGFycmF5KCAnYmJkNTIwZGI0ZWEyY2UzN2I2YzY0M2E0NWVjNDFlZTdkMzQ0MmQxMycsICc3ZDFmMzMxYzJhMjM5MDBlNmU4ZGQxNDlhODRjNTgzNzU4OTRmYWZkJywgJzZhZjA1NWY1ZDEzMjgyMDUxYjZiNmI2ZWQ3ZmRlNTc4ZDAyMDA2YmYnICkgKSApIHsKCQkJaWYgKCBjdXJyZW50X3VzZXJfY2FuKCdtYW5hZ2Vfb3B0aW9ucycpICkgewoJCQkJcmV0dXJuOwoJCQl9CgkJCW5md19kcm9waW5fYmxvY2soICJSRVFVRVNUOmFjdGlvbiA9IHskX1JFUVVFU1RbJ2FjdGlvbiddfSIsIDMsIDE2MDQgKTsKCQl9IGVsc2VpZiAoICRuZndfYWN0X2hhc2ggPT0gJ2ZmYzIzNmVlZTMwNWZlOTU5MjJmMjUxMjI3MTgyYjExMTlkNTVkOGEnICYmIGlzc2V0KCAkX1BPU1RbJ2lkJ10gKSApIHsKCQkJaWYgKCBuZndfZHJvcGluX2Nhbl9lZGl0X3Bvc3QoICRfUE9TVFsnaWQnXSApID09IHRydWUgKSB7CgkJCQlyZXR1cm47CgkJCX0KCQkJbmZ3X2Ryb3Bpbl9ibG9jayggIlJFUVVFU1Q6YWN0aW9uID0geyRfUkVRVUVTVFsnYWN0aW9uJ119IiwgMywgMTYwNSApOwoKCQkvLyAyMDIwLTA1LTI5CgkJfSBlbHNlaWYgKCBpbl9hcnJheSggJG5md19hY3RfaGFzaCwgYXJyYXkoICc1NWI2ZDc4N2U1OGZkNDczYzUxMjJiYTgyZWIzNTkxOGYxOTgzZWZiJywgJzBiNzFkOTFjMzQ0OTExYTlhZmExNzhlMGFjY2Y5YTg1ZjQ3OWU1YzcnLCAnNzQwZjE5YzdjMjZkMDEyZDlhZWRmMmVlMmU1MTU1YWRhZDhjNzM0NycsICc5NjMzMzkxZGMxMjc5ZTEzODA0OGU0ODViYTNjMGU4NjQxOWFjNTE5JywgJzdjYTBjOGM3YjIxOWQ0M2RkZGY3OGRmNDJhZGEwMWQ2NTE4ODhiNmQnLCAnYzYyMjhlYjE0NDdmOTlkNzdlY2UwZTA5YjdlNjZlNDhlYTcwZDc2MScsICc1MDk1ZjhjOWRhMzZhZTgzNTM1Yzg5YTNiNWVjZTIzOWY4YzgwMTk3JywKCQknYWMxODM0YTNhM2VhYjc5NWFhM2NlNmU5NDA1MmE0YWY3MmM2YTg3MycsICdkM2U3YzZjZTYwODhmMjBlNTMxYTJhZDhlYWE3MTNiYzg3YmY5MTEzJyApICkgKSB7CgkJCWlmICggY3VycmVudF91c2VyX2NhbignYnJpenlfZWRpdF93aG9sZV9wYWdlJykgfHwgY3VycmVudF91c2VyX2NhbignYnJpenlfZWRpdF9jb250ZW50X29ubHknKSApIHsKCQkJCXJldHVybjsKCQkJfQoJCQluZndfZHJvcGluX2Jsb2NrKCAiUkVRVUVTVDphY3Rpb24gPSB7JF9SRVFVRVNUWydhY3Rpb24nXX0iLCAzLCAxNjA2KTsKCgkJLy8gMjAyMC0wNi0wNAoJCX0gZWxzZWlmICggaW5fYXJyYXkoICRuZndfYWN0X2hhc2gsIGFycmF5KCAnOTJiMjJkOWZiMWNiZWU3NTkzOGViODgzMTEzMmE4MmRkOGQxM2RiZCcsICcwY2JlMGJkZDUwMTRiNzQwMDUzOGVjM2Y3ZjJhOTY2N2RmOGNiZWRlJywgJ2MyNjkwYWIyOGNhY2VkMjg5MDgxMjFiY2U2N2NkZDYyN2QzNWE3MzQnICkgKSApIHsKCQkJbmZ3X2Ryb3Bpbl9ibG9jayggIlJFUVVFU1Q6YWN0aW9uID0geyRfUkVRVUVTVFsnYWN0aW9uJ119IiwgMywgMTYwNyk7CgoJCS8vIDIwMjAtMDctMTYKCQl9IGVsc2VpZiAoICRuZndfYWN0X2hhc2ggPT0gJzA4NTY3YmEzN2UwODdlYjA4ZGU0ZDIzNDAxOTJlMDc2MTZhNzJkMzEnICYmIGlzc2V0KCAkX1BPU1RbJ2lkJ10gKSApIHsKCQkJJHBvc3QgPSBnZXRfcG9zdCggKGludCkkX1BPU1RbJ2lkJ10gKTsKCQkJaWYgKCEgZW1wdHkoICRwb3N0LT5wb3N0X3Bhc3N3b3JkICkgfHwgJHBvc3QtPnBvc3Rfc3RhdHVzICE9ICdwdWJsaXNoJyApIHsKCQkJCW5md19kcm9waW5fYmxvY2soICJSRVFVRVNUOmFjdGlvbiA9IHskX1JFUVVFU1RbJ2FjdGlvbiddfSIsIDMsIDE2MDgpOwoJCQl9CgkJfSBlbHNlaWYgKCAkbmZ3X2FjdF9oYXNoID09ICdjOTZmMDI5YzAyNjExNmViY2YzMWFhMzMwNWMxZjNjMzE2MDBkZmJiJyApIHsKCQkJaWYgKCEgY3VycmVudF91c2VyX2NhbigncHVibGlzaF9wYWdlcycpICkgewoJCQkJbmZ3X2Ryb3Bpbl9ibG9jayggIlJFUVVFU1Q6YWN0aW9uID0geyRfUkVRVUVTVFsnYWN0aW9uJ119IiwgMywgMTYwOSk7CgkJCX0KCQl9IGVsc2VpZiggJG5md19hY3RfaGFzaCA9PSAnMGVlNmNhMmNmMDEyYTllODU5ODY0YTcxOGQ3MGRkZTVlYmIwMWZmNScgKSB7CgkJCWlmICghIGVtcHR5KCAkX1JFUVVFU1RbJ3N0YXR1cyddICkgJiYgJF9SRVFVRVNUWydzdGF0dXMnXSA9PT0gJ2Rpc2FibGUtY21wJyAmJiBnZXRfb3B0aW9uKCduaXRlb0NTX2NvdW50ZXJfZGF0ZScgKSA+IHRpbWUoKSApIHsKCQkJCW5md19kcm9waW5fYmxvY2soICJSRVFVRVNUOmFjdGlvbiA9IHskX1JFUVVFU1RbJ2FjdGlvbiddfSIsIDMsIDE2MTApOwoJCQl9CgkJfQoJfQp9Ci8vIDIwMjAtMDktMDEgaHR0cDovL2Jsb2cubmludGVjaG5ldC5jb20vY3JpdGljYWwtemVyby1kYXktdnVsbmVyYWJpbGl0eS1maXhlZC1pbi13b3JkcHJlc3MtZmlsZS1tYW5hZ2VyLTcwMDAwMC1pbnN0YWxsYXRpb25zLwppZiAoIGlzX2RpciggV1BfUExVR0lOX0RJUiAuJy93cC1maWxlLW1hbmFnZXInKSApIHsKCWlmICggZmlsZV9leGlzdHMoIFdQX1BMVUdJTl9ESVIgLicvd3AtZmlsZS1tYW5hZ2VyL2xpYi9waHAvY29ubmVjdG9yLm1pbmltYWwucGhwJyApICkgewoJCUB1bmxpbmsoIFdQX1BMVUdJTl9ESVIgLicvd3AtZmlsZS1tYW5hZ2VyL2xpYi9waHAvY29ubmVjdG9yLm1pbmltYWwucGhwJyApOwoJfQoJJGdsb2IgPSBnbG9iKCBXUF9QTFVHSU5fRElSIC4nL3dwLWZpbGUtbWFuYWdlci9saWIvZmlsZXMvKi5waHAnICk7CglpZiAoIGlzX2FycmF5KCAkZ2xvYiApICkgewoJCWZvcmVhY2goICRnbG9iIGFzICRmaWxlICkgewoJCQlpZiAoIGlzX3dyaXRhYmxlKCAkZmlsZSApICkgewoJCQkJQHVubGluayggJGZpbGUgKTsKCQkJfQoJCX0KCX0KfQoKLy8gLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tCmZ1bmN0aW9uIG5md19kcm9waW5fYmxvY2soICRtZXNzYWdlLCAkbGV2ZWwsICRydWxlICkgewoJbmZ3X2xvZzIoJ1dQIHZ1bG5lcmFiaWxpdHknLCAkbWVzc2FnZSwgJGxldmVsLCAkcnVsZSk7CglleGl0KCJFcnJvcjogcGxlYXNlIGNvbnRhY3QgdGhlIGFkbWluaXN0cmF0b3IuIik7Cn0KLy8gLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tCmZ1bmN0aW9uIG5md19kcm9waW5fY2FuX2VkaXRfcG9zdCggJHBvc3RpZCApIHsKCSR0eXBlID0gZ2V0X3Bvc3RfdHlwZSggKGludCkgJHBvc3RpZCApOwoJaWYgKCAoICR0eXBlID09ICdwYWdlJyB8fCAkdHlwZSA9PSAncG9zdCcgKSAmJiAhIGN1cnJlbnRfdXNlcl9jYW4oICJlZGl0X3skdHlwZX0iLCAkcG9zdGlkICkgKSB7CgkJcmV0dXJuIGZhbHNlOwoJfQoJcmV0dXJuIHRydWU7Cn0KLy8gLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tCmZ1bmN0aW9uIG5md19kcm9waW5fY2FuX2RlbGV0ZV9wb3N0KCAkcG9zdGlkICkgewoJJHR5cGUgPSBnZXRfcG9zdF90eXBlKCAoaW50KSAkcG9zdGlkICk7CglpZiAoICggJHR5cGUgPT0gJ3BhZ2UnIHx8ICR0eXBlID09ICdwb3N0JyApICYmICEgY3VycmVudF91c2VyX2NhbiggImRlbGV0ZV97JHR5cGV9IiwgJHBvc3RpZCApICkgewoJCXJldHVybiBmYWxzZTsKCX0KCXJldHVybiB0cnVlOwp9Ci8vIC0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLQo="
 }
