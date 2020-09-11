@@ -69,18 +69,18 @@ const purgecss = require('@fullhuman/postcss-purgecss')({
   defaultExtractor: content => content.match(/[\w-/:]+(?<!:)/g) || []
 });
 
-const config = fs.readFileSync('./src/config/config.json', {encoding: 'utf-8'});
-const rules = fs.readFileSync('./src/config/rules.json', {encoding: 'utf-8'});
+const config = fs.readFileSync('./src/config/config.json', { encoding: 'utf-8' });
+const rules = fs.readFileSync('./src/config/rules.json', { encoding: 'utf-8' });
 
 const configString = config
-    .replace(/(\r\n|\n|\r|\t|\s\s\s\s|\s\s)/gm, "")
-    .replace(/(\\)/gm, "\\\\")
-    .replace(/(\": )/gm, "\":");
+  .replace(/(\r\n|\n|\r|\t|\s\s\s\s|\s\s)/gm, "")
+  .replace(/(\\)/gm, "\\\\")
+  .replace(/(\": )/gm, "\":");
 
 const rulesString = rules
-    .replace(/(\r\n|\n|\r|\t|\s\s\s\s|\s\s)/gm, "")
-    .replace(/(\\)/gm, "\\\\")
-    .replace(/(\": )/gm, "\":");
+  .replace(/(\r\n|\n|\r|\t|\s\s\s\s|\s\s)/gm, "")
+  .replace(/(\\)/gm, "\\\\")
+  .replace(/(\": )/gm, "\":");
 
 module.exports = {
   mode: 'development',
@@ -88,9 +88,11 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin(),
     new webpack.ProgressPlugin(),
-    new CopyPlugin([
-      'node_modules/workbox-sw/build/workbox-sw.js'
-    ]),
+    new CopyPlugin({
+      patterns: [
+        'node_modules/workbox-sw/build/workbox-sw.js'
+      ]
+    }),
     new MiniCssExtractPlugin({ filename: 'main.[chunkhash].css' }),
     new HtmlWebpackPlugin({
       template: 'src/index.html'
@@ -123,53 +125,53 @@ module.exports = {
 
   module: {
     rules: [
-    {
-      test: /index\.js$/,
-      loader: 'string-replace-loader',
-      options: {
-        search: '###CONFIG###',
-        replace: configString,
-      }
-    },
-    {
-      test: /index\.js$/,
-      loader: 'string-replace-loader',
-      options: {
-        search: '###RULES###',
-        replace: rulesString,
-      }
-    },
-    {
-      test: /.(js|jsx)$/,
-      include: [],
-      loader: 'babel-loader'
-    }, {
-      test: /.css$/,
-
-      use: [{
-        loader: MiniCssExtractPlugin.loader
-      }, {
-        loader: "css-loader",
-
+      {
+        test: /index\.js$/,
+        loader: 'string-replace-loader',
         options: {
-          importLoaders: 1,
-          sourceMap: true
+          search: '###CONFIG###',
+          replace: configString,
         }
-      }, {
-        loader: "postcss-loader",
-
+      },
+      {
+        test: /index\.js$/,
+        loader: 'string-replace-loader',
         options: {
-          plugins: function () {
-            return [
-              tailwind,
-              precss,
-              autoprefixer,
-              purgecss
-            ];
+          search: '###RULES###',
+          replace: rulesString,
+        }
+      },
+      {
+        test: /.(js|jsx)$/,
+        include: [],
+        loader: 'babel-loader'
+      }, {
+        test: /.css$/,
+
+        use: [{
+          loader: MiniCssExtractPlugin.loader
+        }, {
+          loader: "css-loader",
+
+          options: {
+            importLoaders: 1,
+            sourceMap: true
           }
-        }
+        }, {
+          loader: "postcss-loader",
+
+          options: {
+            postcssOptions: {
+              plugins: [
+                tailwind,
+                precss,
+                autoprefixer,
+                purgecss
+              ]
+            }
+          }
+        }]
       }]
-    }]
   },
 
   optimization: {
