@@ -138,7 +138,7 @@
         "ena": 1,
         "cha": {
             "1": {
-                "whe": "GET|COOKIE|HTTP_REFERER|HTTP_USER_AGENT",
+                "whe": "GET|COOKIE|HTTP_REFERER|HTTP_USER_AGENT|FILES",
                 "wha": "<(?i:applet|div|embed|form|i?frame(?:set)?|i(?:mg|sindex)|link|m(?:eta|arquee)|object|script|textarea)\\b.*=.*?>",
                 "ope": 5,
                 "nor": 1
@@ -255,7 +255,7 @@
         "ena": 1,
         "cha": {
             "1": {
-                "whe": "GET|COOKIE|HTTP_REFERER|HTTP_USER_AGENT",
+                "whe": "GET|COOKIE|HTTP_REFERER|HTTP_USER_AGENT|FILES",
                 "wha": "(?i)<[a-z].+?\\bon[a-z]{3,29}\\s*=.{5}",
                 "ope": 5,
                 "nor": 1
@@ -372,7 +372,7 @@
         "ena": 1,
         "cha": {
             "1": {
-                "whe": "POST|GET|HTTP_REFERER|HTTP_USER_AGENT",
+                "whe": "POST|GET|HTTP_REFERER|HTTP_USER_AGENT|FILES",
                 "wha": "(?i)[\\s\"'\\x60;,\\\/0-9=\\x0B\\x09\\x0C(]+on(?:abort|blur|change|click|close|dblclick|dragdrop|endevent|error|exit|focus(?:in|out)?|formchange|form(?:data|input)|input|key(?:down|press|statuschange|up)|load[a-z]{0,10}|(?:mouse|pointer)[a-z]{2,10}|move|move(?:end|start)|reset|resize|noupdate|scroll|select|submit|success|svgload|timeout|unload)\\s*[=;,|'\"]",
                 "ope": 5,
                 "nor": 1
@@ -385,7 +385,7 @@
         "ena": 1,
         "cha": {
             "1": {
-                "whe": "GET|POST|COOKIE|HTTP_REFERER|HTTP_USER_AGENT|RAW",
+                "whe": "GET|POST|COOKIE|HTTP_REFERER|HTTP_USER_AGENT",
                 "wha": "(?i)<[a-z]+\\\\?\/[a-z]+.+?=.+?>",
                 "ope": 5,
                 "nor": 1
@@ -574,7 +574,7 @@
         "ena": 1,
         "cha": {
             "1": {
-                "whe": "GET|POST",
+                "whe": "GET|POST|FILES",
                 "wha": "^[-\\d';].+\\w.+(?:--[\\x00-\\x20\\x7f]*|#|\/\\*)$",
                 "ope": 5,
                 "nor": 1,
@@ -699,7 +699,7 @@
         "ena": 1,
         "cha": {
             "1": {
-                "whe": "GET|POST|COOKIE|HTTP_REFERER|HTTP_USER_AGENT",
+                "whe": "GET|POST|COOKIE|HTTP_REFERER|HTTP_USER_AGENT|FILES",
                 "wha": "^-?\\d+.{0,30}(?:\\band\\b.{0,30})?\\b(?i:union|select)\\b",
                 "ope": 5,
                 "nor": 1,
@@ -718,7 +718,7 @@
         "ena": 1,
         "cha": {
             "1": {
-                "whe": "GET|COOKIE|HTTP_REFERER|HTTP_USER_AGENT|POST",
+                "whe": "GET|COOKIE|HTTP_REFERER|HTTP_USER_AGENT|POST|FILES",
                 "wha": "^(?:\\b(?:null|and|or)\\b|\\|\\||&&)?\\s*union\\s+(?:all\\s+)?select\\b",
                 "ope": 5,
                 "nor": 1,
@@ -752,8 +752,8 @@
         "ena": 1,
         "cha": {
             "1": {
-                "whe": "GET|COOKIE|HTTP_REFERER|HTTP_USER_AGENT",
-                "wha": "^.{0,10}\\bselect\\b\\s.{1,150}\\bfrom\\b.",
+                "whe": "GET|COOKIE|HTTP_REFERER|HTTP_USER_AGENT|FILES",
+                "wha": "^.{0,10}\\bselect\\b\\s.{1,50}\\bfrom\\b.",
                 "ope": 5,
                 "nor": 1,
                 "tra": 1,
@@ -772,7 +772,7 @@
         "ena": 1,
         "cha": {
             "1": {
-                "whe": "GET|COOKIE|HTTP_REFERER|HTTP_USER_AGENT",
+                "whe": "GET|COOKIE|HTTP_REFERER|HTTP_USER_AGENT|FILES",
                 "wha": "union all select",
                 "ope": 3,
                 "nor": 1,
@@ -814,7 +814,7 @@
         "ena": 1,
         "cha": {
             "1": {
-                "whe": "GET|POST|COOKIE|HTTP_REFERER|HTTP_USER_AGENT",
+                "whe": "GET|POST|COOKIE|HTTP_REFERER|HTTP_USER_AGENT|FILES",
                 "wha": "^.{0,30}(?:(?:\\b(?:and|or|union)\\b|\\|\\||&&).{0,20})?\\balter\\s+(?:(?:database|schema)\\b|table\\s+.{1,70}\\s+rename\\b|(?:ignore\\s+)?table\\b|user\\b(?:\\s+if\\s+exists\\s)?.{1,38}@).{1,70}",
                 "ope": 5,
                 "nor": 1,
@@ -842,7 +842,7 @@
         "ena": 1,
         "cha": {
             "1": {
-                "whe": "GET|POST|COOKIE|HTTP_REFERER|HTTP_USER_AGENT",
+                "whe": "GET|POST|COOKIE|HTTP_REFERER|HTTP_USER_AGENT|FILES",
                 "wha": "^.{0,30}(?:(?:\\b(?:and|or|union)\\b|\\|\\||&&).{0,20})?\\bdrop\\s+(?:(?:table\\b|index\\b.{1,60}\\son\\b|(?:database|schema)\\s+(?:if\\s+exists\\b)?).{1,70}|user\\s+(?:if\\s+exists\\b)?.{1,38}@.{1,38})",
                 "ope": 5,
                 "nor": 1,
@@ -870,7 +870,7 @@
         "ena": 1,
         "cha": {
             "1": {
-                "whe": "GET|POST|COOKIE|HTTP_REFERER|HTTP_USER_AGENT",
+                "whe": "GET|POST|COOKIE|HTTP_REFERER|HTTP_USER_AGENT|FILES",
                 "wha": "^.{0,30}(?:(?:\\b(?:and|or|union)\\b|\\|\\||&&).{0,20})?\\bload\\s+data\\s+(?:(?:low_priority\\s+|concurrent\\s+)?local\\s+)?infile\\b.{1,500}\\binto\\s+table\\b.{2}",
                 "ope": 5,
                 "nor": 1,
@@ -1333,7 +1333,7 @@
         "ena": 1,
         "cha": {
             "1": {
-                "whe": "GET|POST|COOKIE|HTTP_REFERER|HTTP_USER_AGENT",
+                "whe": "GET|POST|COOKIE|HTTP_REFERER|HTTP_USER_AGENT|FILES",
                 "wha": "(?i)concat|select|database|insert|update|union|table",
                 "ope": 5,
                 "nor": 1,
@@ -1615,7 +1615,7 @@
         "cha": {
             "1": {
                 "whe": "GET|POST|COOKIE|SERVER:HTTP_USER_AGENT|SERVER:HTTP_REFERER",
-                "wha": "^.{0,90}\\b(?i)(?:(expect|file|ph(ar|p)|zip):\/\/.|data:(?!image\/(?:je?pg|png|gif)).*?;\\s*base64.*?,)",
+                "wha": "^.{0,90}\\b(?i)(?:(expect|file|ph(ar|p)|zip):\/\/.|data:(?!image\/(?:jpe?g|png|gif)).*?;\\s*base64.*?,)",
                 "ope": 5,
                 "nor": 1
             }
@@ -1789,15 +1789,14 @@
         }
     },
     "1360": {
-        "why": "Unrestricted REST API access",
+        "why": "WP vulnerability",
         "lev": 3,
         "ena": 1,
         "cha": {
             "1": {
-                "whe": "REQUEST_URI|REQUEST:rest_route",
-                "wha": "\/wpshopify\/v1\/settings",
-                "ope": 3,
-                "nor": 1
+                "whe": "REQUEST:action",
+                "wha": "^tinvwl_(ex|im)port_settings$",
+                "ope": 5
             }
         }
     },
@@ -1871,7 +1870,7 @@
         "cha": {
             "1": {
                 "whe": "REQUEST:action",
-                "wha": "^wp_ajax_try_2020_v",
+                "wha": "^wp_ajax_try_2020_",
                 "ope": 5
             }
         }
@@ -1930,26 +1929,26 @@
         }
     },
     "1371": {
-        "why": "Unauthenticated settings access",
+        "why": "WP vulnerability",
         "lev": 3,
         "ena": 1,
         "cha": {
             "1": {
-                "whe": "GET:action",
-                "wha": "^(export_wpmm_theme|wp_megamenu_nav_export)$",
+                "whe": "FILES:default_location",
+                "wha": "\\.(?:ph(?:p([34x7]|5\\d?)?|t(ml)?|ar)|html)\\b",
                 "ope": 5
             }
         }
     },
     "1372": {
-        "why": "Unauthenticated settings change",
+        "why": "WP vulnerability",
         "lev": 3,
         "ena": 1,
         "cha": {
             "1": {
-                "whe": "POST:wpmm_theme_type",
-                "wha": "",
-                "ope": 7
+                "whe": "COOKIE:EWD_URP_Karma_IDs|COOKIE:EWD_URP_Reviewed_Products|COOKIE:njt_gdpr_allow_permissions|COOKIE:usces_cookie",
+                "wha": "\\b[OC]:\\+?\\d+:\"[a-zA-Z_\\x7f-\\xff][a-zA-Z0-9_\\x7f-\\xff]*\":\\+?\\d+:{.*?}",
+                "ope": 5
             }
         }
     },
@@ -2048,18 +2047,12 @@
         }
     },
     "1380": {
-        "why": "Unauthorized REST API access",
+        "why": "WP vulnerability",
         "lev": 3,
         "ena": 1,
         "cha": {
             "1": {
-                "whe": "REQUEST_URI",
-                "wha": "\/import_elementor",
-                "ope": 3,
-                "nor": 1
-            },
-            "2": {
-                "whe": "POST:template_url",
+                "whe": "GET:awdr_switch_plugin_to",
                 "wha": "",
                 "ope": 7
             }
@@ -2071,8 +2064,8 @@
         "ena": 1,
         "cha": {
             "1": {
-                "whe": "REQUEST:action",
-                "wha": "mailerlite_get_more_groups",
+                "whe": "download-lp-users",
+                "wha": "yes",
                 "ope": 1
             }
         }
@@ -2238,6 +2231,64 @@
             }
         }
     },
+    "1394": {
+        "why": "WP vulnerability",
+        "lev": 3,
+        "ena": 1,
+        "cha": {
+            "1": {
+                "whe": "POST:file|POST:restore_script_url",
+                "wha": "",
+                "ope": 7
+            },
+            "2": {
+                "whe": "REQUEST:action",
+                "wha": "restore_backup",
+                "ope": 1
+            }
+        }
+    },
+    "1395": {
+        "why": "Unauthenticated action",
+        "lev": 3,
+        "ena": 1,
+        "cha": {
+            "1": {
+                "whe": "REQUEST:action",
+                "wha": "post_grid_import_xml_layouts",
+                "ope": 1
+            }
+        }
+    },
+    "1396": {
+        "why": "WP Vulnerability",
+        "lev": 3,
+        "ena": 1,
+        "cha": {
+            "1": {
+                "whe": "SCRIPT_NAME",
+                "wha": "ait-csv-import-export\/admin\/upload-handler.php",
+                "ope": 3
+            },
+            "2": {
+                "whe": "FILES:file",
+                "wha": "\\.(?:ph(?:p([34x7]|5\\d?)?|t(ml)?|ar)|html)\\b",
+                "ope": 5
+            }
+        }
+    },
+    "1397": {
+        "why": "Unauthenticated action",
+        "lev": 3,
+        "ena": 1,
+        "cha": {
+            "1": {
+                "whe": "POST:delete_file",
+                "wha": "",
+                "ope": 7
+            }
+        }
+    },
     "1399": {
         "why": "Unauthenticated action",
         "lev": 3,
@@ -2332,47 +2383,6 @@
             }
         }
     },
-    "1406": {
-        "why": "Unauthenticated stored XSS",
-        "lev": 3,
-        "ena": 1,
-        "cha": {
-            "1": {
-                "whe": "POST:simple_fields_do_import",
-                "wha": "",
-                "ope": 7
-            }
-        }
-    },
-    "1407": {
-        "why": "WP vulnerability",
-        "lev": 3,
-        "ena": 1,
-        "cha": {
-            "1": {
-                "whe": "REQUEST:action",
-                "wha": "^uael_login_form_(google|facebook)$",
-                "ope": 5
-            },
-            "2": {
-                "whe": "RAW",
-                "wha": "access_token",
-                "ope": 8
-            }
-        }
-    },
-    "1408": {
-        "why": "WP vulnerability (CVE-2019-17239)",
-        "lev": 3,
-        "ena": 1,
-        "cha": {
-            "1": {
-                "whe": "POST:alg_download_plugins_dashboard_save_settings",
-                "wha": "",
-                "ope": 7
-            }
-        }
-    },
     "1409": {
         "why": "Unrestricted REST API access",
         "lev": 3,
@@ -2383,30 +2393,6 @@
                 "wha": "\/visualizer\/v1\/(upload-data|update-chart|get-permission-data)",
                 "ope": 5,
                 "nor": 1
-            }
-        }
-    },
-    "1410": {
-        "why": "Unauthorized AJAX action",
-        "lev": 3,
-        "ena": 1,
-        "cha": {
-            "1": {
-                "whe": "REQUEST:action",
-                "wha": "^(?:webphoto_upload|(?:save_)?mk_theme_editor_(?:theme_files|file_(?:open|create|remove|upload)|folder_remove))$",
-                "ope": 5
-            }
-        }
-    },
-    "1411": {
-        "why": "WP Vulnerability",
-        "lev": 3,
-        "ena": 1,
-        "cha": {
-            "1": {
-                "whe": "POST:csv_exporter_type",
-                "wha": "",
-                "ope": 7
             }
         }
     },
@@ -3193,50 +3179,8 @@
         "cha": {
             "1": {
                 "whe": "REQUEST:action",
-                "wha": "",
-                "ope": 7
-            },
-            "2": {
-                "whe": "REQUEST:action",
-                "wha": "452df9b632e92170f8f445b6eb6394f3",
-                "exe": "md5",
-                "ope": 1
-            }
-        }
-    },
-    "1468": {
-        "why": "WP vulnerability",
-        "lev": 3,
-        "ena": 1,
-        "cha": {
-            "1": {
-                "whe": "REQUEST:action",
-                "wha": "",
-                "ope": 7
-            },
-            "2": {
-                "whe": "REQUEST:action",
-                "wha": "4d7c0af547f6c4bcd6a92ce32dc554b6",
-                "exe": "md5",
-                "ope": 1
-            }
-        }
-    },
-    "1469": {
-        "why": "WP vulnerability",
-        "lev": 3,
-        "ena": 1,
-        "cha": {
-            "1": {
-                "whe": "REQUEST:action",
-                "wha": "",
-                "ope": 7
-            },
-            "2": {
-                "whe": "REQUEST:action",
-                "wha": "bdd033c70c19745694ef184ab78eb1ed",
-                "exe": "md5",
-                "ope": 1
+                "wha": "^(epsilon_framework_ajax_action|(welcome_screen|epsilon_dashboard)_ajax_callback)$",
+                "ope": 5
             }
         }
     },
@@ -3430,8 +3374,13 @@
         "ena": 1,
         "cha": {
             "1": {
+                "whe": "SCRIPT_NAME",
+                "wha": "\/wp-login.php",
+                "ope": 3
+            },
+            "2": {
                 "whe": "POST:log",
-                "wha": "^(foxilitrix|system_not_delete_|admin_sweet|AnonymousFox)",
+                "wha": "^(server_admin|foxilitrix|system_not_delete_|admin_sweet|AnonymousFox|adminlin|cron-.{40}$)|['\"<>;]",
                 "ope": 5
             }
         }
@@ -3667,6 +3616,23 @@
             }
         }
     },
+    "1501": {
+        "why": "WP vulnerability",
+        "lev": 3,
+        "ena": 1,
+        "cha": {
+            "1": {
+                "whe": "REQUEST:action",
+                "wha": "gdlr_lms_cancel_booking",
+                "ope": 1
+            },
+            "2": {
+                "whe": "POST:id",
+                "wha": "\\D",
+                "ope": 5
+            }
+        }
+    },
     "1502": {
         "why": "WP vulnerability",
         "lev": 3,
@@ -3769,13 +3735,11 @@
         "cha": {
             "1": {
                 "whe": "REQUEST:action",
-                "wha": "764de9f0293d3b22dc80afe67679fbb3",
-                "exe": "md5",
+                "wha": "uploader",
                 "ope": 1
             },
             "2": {
-                "whe": "FILES:b056180f5d099d486eaecb22b65d46b7",
-                "tmp": "",
+                "whe": "FILES:uploadfile",
                 "wha": "",
                 "ope": 7
             }
@@ -3788,13 +3752,11 @@
         "cha": {
             "1": {
                 "whe": "REQUEST:action",
-                "wha": "1f5fa7d964c9dc72a10e28f35e578d18",
-                "exe": "md5",
+                "wha": "iconset_uploader",
                 "ope": 1
             },
             "2": {
-                "whe": "FILES:b056180f5d099d486eaecb22b65d46b7",
-                "tmp": "",
+                "whe": "FILES:uploadfile",
                 "wha": "",
                 "ope": 7
             }
@@ -3831,94 +3793,6 @@
                 "whe": "REQUEST:post",
                 "wha": "\\D",
                 "ope": 5
-            }
-        }
-    },
-    "1523": {
-        "why": "Unauthorized access",
-        "lev": 3,
-        "ena": 1,
-        "cha": {
-            "1": {
-                "whe": "GET:es",
-                "wha": "export",
-                "ope": 1
-            },
-            "2": {
-                "whe": "REQUEST:option",
-                "wha": "view_all_subscribers",
-                "ope": 1
-            }
-        }
-    },
-    "1524": {
-        "why": "Unauthorized action",
-        "lev": 3,
-        "ena": 1,
-        "cha": {
-            "1": {
-                "whe": "GET:action|POST:action",
-                "wha": "update-plugin",
-                "ope": 1
-            },
-            "2": {
-                "whe": "POST:plugin",
-                "wha": "\\.\\.\/+\\.\\.\/",
-                "ope": 5,
-                "nor": 1
-            }
-        }
-    },
-    "1526": {
-        "why": "Unauthorized option modification",
-        "lev": 2,
-        "ena": 1,
-        "cha": {
-            "1": {
-                "whe": "POST:likebtn_import_config",
-                "wha": "",
-                "ope": 7
-            }
-        }
-    },
-    "1527": {
-        "why": "Unauthorized action",
-        "lev": 2,
-        "ena": 1,
-        "cha": {
-            "1": {
-                "whe": "REQUEST:action",
-                "wha": "^sci_ajax_delete_(?:icon|option)$",
-                "ope": 5
-            }
-        }
-    },
-    "1528": {
-        "why": "Unauthorized action",
-        "lev": 3,
-        "ena": 1,
-        "cha": {
-            "1": {
-                "whe": "REQUEST:action",
-                "wha": "ulikelogs",
-                "ope": 1
-            },
-            "2": {
-                "whe": "POST:table",
-                "wha": "",
-                "ope": 7
-            }
-        }
-    },
-    "1529": {
-        "why": "Remote code execution",
-        "lev": 3,
-        "ena": 1,
-        "cha": {
-            "1": {
-                "whe": "SCRIPT_NAME",
-                "wha": "\/partials\/email-preview.php",
-                "ope": 3
             }
         }
     },
@@ -4136,5 +4010,5 @@
         "1512": 1,
         "1535": 1
     },
-    "dropins": "PD9waHAgLy8gTmluamFGaXJld2FsbCdzIGRyb3BpbnMucGhwIH4gRG8gbm90IGRlbGV0ZSEKaWYgKCEgZGVmaW5lZCggJ05GV19FTkdJTkVfVkVSU0lPTicgKSApIHsgZGllKCAnRm9yYmlkZGVuJyApOyB9Ci8vIC0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLQppZiAoIGlzc2V0KCAkX1JFUVVFU1RbJ2FjdGlvbiddICkgKSB7CgoJaWYgKCBpc19zdXBlcl9hZG1pbigpICkgeyByZXR1cm47IH0KCglpZiAoIGluX2FycmF5KCAkX1JFUVVFU1RbJ2FjdGlvbiddLCBhcnJheSggJ2Z1c2lvbl9idWlsZGVyX3VwZGF0ZV9sYXlvdXQnLCAnZnVzaW9uX2J1aWxkZXJfZGVsZXRlX2xheW91dCcsICdmdXNpb25fYnVpbGRlcl9zYXZlX2xheW91dCcgKSApICkgewoJCWlmICggJF9SRVFVRVNUWydhY3Rpb24nXSA9PSAnZnVzaW9uX2J1aWxkZXJfZGVsZXRlX2xheW91dCcgKSB7CgkJCWlmICghIGVtcHR5KCAkX1BPU1RbJ2Z1c2lvbl9sYXlvdXRfaWQnXSApICYmIGN1cnJlbnRfdXNlcl9jYW4oICdkZWxldGVfcG9zdCcsICRfUE9TVFsnZnVzaW9uX2xheW91dF9pZCddICkgKSB7CgkJCQlyZXR1cm47CgkJCX0KCQl9IGVsc2VpZiAoICRfUkVRVUVTVFsnYWN0aW9uJ10gPT0gJ2Z1c2lvbl9idWlsZGVyX3NhdmVfbGF5b3V0JyApIHsKCQkJaWYgKCBjdXJyZW50X3VzZXJfY2FuKCAnZWRpdF9wb3N0cycgKSAmJiBpbl9hcnJheSggQCRfUE9TVFsnZnVzaW9uX2xheW91dF9wb3N0X3R5cGUnXSwgYXJyYXkoJ2Z1c2lvbl90ZW1wbGF0ZScsICdmdXNpb25fZWxlbWVudCcpICkgKSB7CgkJCQlyZXR1cm47CgkJCX0KCQl9IGVsc2VpZiAoICRfUkVRVUVTVFsnYWN0aW9uJ10gPT0gJ2Z1c2lvbl9idWlsZGVyX3VwZGF0ZV9sYXlvdXQnICkgewoJCQlpZiAoISBlbXB0eSggJF9QT1NUWydmdXNpb25fbGF5b3V0X2lkJ10gKSAmJiBjdXJyZW50X3VzZXJfY2FuKCAnZWRpdF9wb3N0JywgJF9QT1NUWydmdXNpb25fbGF5b3V0X2lkJ10gKSApIHsKCQkJCXJldHVybjsKCQkJfQoJCX0KCQluZndfZHJvcGluX2Jsb2NrKCAiUkVRVUVTVDphY3Rpb24gPSB7JF9SRVFVRVNUWydhY3Rpb24nXX0iLCAzLCAxNjAxKTsKCgl9IGVsc2VpZiAoICRfUkVRVUVTVFsnYWN0aW9uJ10gPT0gJ3VhZWxfcmVnaXN0ZXJfdXNlcicgKSB7CgkJaWYgKCEgZ2V0X29wdGlvbiggJ3VzZXJzX2Nhbl9yZWdpc3RlcicgKSApIHsKCQkJbmZ3X2Ryb3Bpbl9ibG9jayggIlJFUVVFU1Q6YWN0aW9uID0geyRfUkVRVUVTVFsnYWN0aW9uJ119IiwgMywgMTYwMiApOwoJCX0KCS8vIDIwMjAtMDUtMjgKCX0gZWxzZWlmICggJF9SRVFVRVNUWydhY3Rpb24nXSA9PSAncGFnZWxheWVyX3NhdmVfY29udGVudCcgKSB7CgkJaWYgKCEgZW1wdHkoICRfR0VUWydwb3N0SUQnXSApICkgewoJCQlpZiAoIG5md19kcm9waW5fY2FuX2VkaXRfcG9zdCggJF9HRVRbJ3Bvc3RJRCddICkgPT0gdHJ1ZSApIHsKCQkJCXJldHVybjsKCQkJfQoJCQluZndfZHJvcGluX2Jsb2NrKCAiUkVRVUVTVDphY3Rpb24gPSB7JF9SRVFVRVNUWydhY3Rpb24nXX0iLCAzLCAxNjAzICk7CgkJfQoKCX0gZWxzZSB7CgkJJG5md19hY3RfaGFzaCA9IHNoYTEoICRfUkVRVUVTVFsnYWN0aW9uJ10gKTsKCgkJLy8gMjAyMC0wNS0yOQoJCWlmICggaW5fYXJyYXkoICRuZndfYWN0X2hhc2gsIGFycmF5KCAnYmJkNTIwZGI0ZWEyY2UzN2I2YzY0M2E0NWVjNDFlZTdkMzQ0MmQxMycsICc3ZDFmMzMxYzJhMjM5MDBlNmU4ZGQxNDlhODRjNTgzNzU4OTRmYWZkJywgJzZhZjA1NWY1ZDEzMjgyMDUxYjZiNmI2ZWQ3ZmRlNTc4ZDAyMDA2YmYnICkgKSApIHsKCQkJaWYgKCBjdXJyZW50X3VzZXJfY2FuKCdtYW5hZ2Vfb3B0aW9ucycpICkgewoJCQkJcmV0dXJuOwoJCQl9CgkJCW5md19kcm9waW5fYmxvY2soICJSRVFVRVNUOmFjdGlvbiA9IHskX1JFUVVFU1RbJ2FjdGlvbiddfSIsIDMsIDE2MDQgKTsKCQl9IGVsc2VpZiAoICRuZndfYWN0X2hhc2ggPT0gJ2ZmYzIzNmVlZTMwNWZlOTU5MjJmMjUxMjI3MTgyYjExMTlkNTVkOGEnICYmIGlzc2V0KCAkX1BPU1RbJ2lkJ10gKSApIHsKCQkJaWYgKCBuZndfZHJvcGluX2Nhbl9lZGl0X3Bvc3QoICRfUE9TVFsnaWQnXSApID09IHRydWUgKSB7CgkJCQlyZXR1cm47CgkJCX0KCQkJbmZ3X2Ryb3Bpbl9ibG9jayggIlJFUVVFU1Q6YWN0aW9uID0geyRfUkVRVUVTVFsnYWN0aW9uJ119IiwgMywgMTYwNSApOwoKCQkvLyAyMDIwLTA1LTI5CgkJfSBlbHNlaWYgKCBpbl9hcnJheSggJG5md19hY3RfaGFzaCwgYXJyYXkoICc1NWI2ZDc4N2U1OGZkNDczYzUxMjJiYTgyZWIzNTkxOGYxOTgzZWZiJywgJzBiNzFkOTFjMzQ0OTExYTlhZmExNzhlMGFjY2Y5YTg1ZjQ3OWU1YzcnLCAnNzQwZjE5YzdjMjZkMDEyZDlhZWRmMmVlMmU1MTU1YWRhZDhjNzM0NycsICc5NjMzMzkxZGMxMjc5ZTEzODA0OGU0ODViYTNjMGU4NjQxOWFjNTE5JywgJzdjYTBjOGM3YjIxOWQ0M2RkZGY3OGRmNDJhZGEwMWQ2NTE4ODhiNmQnLCAnYzYyMjhlYjE0NDdmOTlkNzdlY2UwZTA5YjdlNjZlNDhlYTcwZDc2MScsICc1MDk1ZjhjOWRhMzZhZTgzNTM1Yzg5YTNiNWVjZTIzOWY4YzgwMTk3JywKCQknYWMxODM0YTNhM2VhYjc5NWFhM2NlNmU5NDA1MmE0YWY3MmM2YTg3MycsICdkM2U3YzZjZTYwODhmMjBlNTMxYTJhZDhlYWE3MTNiYzg3YmY5MTEzJyApICkgKSB7CgkJCWlmICggY3VycmVudF91c2VyX2NhbignYnJpenlfZWRpdF93aG9sZV9wYWdlJykgfHwgY3VycmVudF91c2VyX2NhbignYnJpenlfZWRpdF9jb250ZW50X29ubHknKSApIHsKCQkJCXJldHVybjsKCQkJfQoJCQluZndfZHJvcGluX2Jsb2NrKCAiUkVRVUVTVDphY3Rpb24gPSB7JF9SRVFVRVNUWydhY3Rpb24nXX0iLCAzLCAxNjA2KTsKCgkJLy8gMjAyMC0wNi0wNAoJCX0gZWxzZWlmICggaW5fYXJyYXkoICRuZndfYWN0X2hhc2gsIGFycmF5KCAnOTJiMjJkOWZiMWNiZWU3NTkzOGViODgzMTEzMmE4MmRkOGQxM2RiZCcsICcwY2JlMGJkZDUwMTRiNzQwMDUzOGVjM2Y3ZjJhOTY2N2RmOGNiZWRlJywgJ2MyNjkwYWIyOGNhY2VkMjg5MDgxMjFiY2U2N2NkZDYyN2QzNWE3MzQnICkgKSApIHsKCQkJbmZ3X2Ryb3Bpbl9ibG9jayggIlJFUVVFU1Q6YWN0aW9uID0geyRfUkVRVUVTVFsnYWN0aW9uJ119IiwgMywgMTYwNyk7CgoJCS8vIDIwMjAtMDctMTYKCQl9IGVsc2VpZiAoICRuZndfYWN0X2hhc2ggPT0gJzA4NTY3YmEzN2UwODdlYjA4ZGU0ZDIzNDAxOTJlMDc2MTZhNzJkMzEnICYmIGlzc2V0KCAkX1BPU1RbJ2lkJ10gKSApIHsKCQkJJHBvc3QgPSBnZXRfcG9zdCggKGludCkkX1BPU1RbJ2lkJ10gKTsKCQkJaWYgKCEgZW1wdHkoICRwb3N0LT5wb3N0X3Bhc3N3b3JkICkgfHwgJHBvc3QtPnBvc3Rfc3RhdHVzICE9ICdwdWJsaXNoJyApIHsKCQkJCW5md19kcm9waW5fYmxvY2soICJSRVFVRVNUOmFjdGlvbiA9IHskX1JFUVVFU1RbJ2FjdGlvbiddfSIsIDMsIDE2MDgpOwoJCQl9CgkJfSBlbHNlaWYgKCAkbmZ3X2FjdF9oYXNoID09ICdjOTZmMDI5YzAyNjExNmViY2YzMWFhMzMwNWMxZjNjMzE2MDBkZmJiJyApIHsKCQkJaWYgKCEgY3VycmVudF91c2VyX2NhbigncHVibGlzaF9wYWdlcycpICkgewoJCQkJbmZ3X2Ryb3Bpbl9ibG9jayggIlJFUVVFU1Q6YWN0aW9uID0geyRfUkVRVUVTVFsnYWN0aW9uJ119IiwgMywgMTYwOSk7CgkJCX0KCQl9IGVsc2VpZiggJG5md19hY3RfaGFzaCA9PSAnMGVlNmNhMmNmMDEyYTllODU5ODY0YTcxOGQ3MGRkZTVlYmIwMWZmNScgKSB7CgkJCWlmICghIGVtcHR5KCAkX1JFUVVFU1RbJ3N0YXR1cyddICkgJiYgJF9SRVFVRVNUWydzdGF0dXMnXSA9PT0gJ2Rpc2FibGUtY21wJyAmJiBnZXRfb3B0aW9uKCduaXRlb0NTX2NvdW50ZXJfZGF0ZScgKSA+IHRpbWUoKSApIHsKCQkJCW5md19kcm9waW5fYmxvY2soICJSRVFVRVNUOmFjdGlvbiA9IHskX1JFUVVFU1RbJ2FjdGlvbiddfSIsIDMsIDE2MTApOwoJCQl9CgkJfQoJfQp9Ci8vIDIwMjAtMDktMDEgaHR0cDovL2Jsb2cubmludGVjaG5ldC5jb20vY3JpdGljYWwtemVyby1kYXktdnVsbmVyYWJpbGl0eS1maXhlZC1pbi13b3JkcHJlc3MtZmlsZS1tYW5hZ2VyLTcwMDAwMC1pbnN0YWxsYXRpb25zLwppZiAoIGlzX2RpciggV1BfUExVR0lOX0RJUiAuJy93cC1maWxlLW1hbmFnZXInKSApIHsKCWlmICggZmlsZV9leGlzdHMoIFdQX1BMVUdJTl9ESVIgLicvd3AtZmlsZS1tYW5hZ2VyL2xpYi9waHAvY29ubmVjdG9yLm1pbmltYWwucGhwJyApICkgewoJCUB1bmxpbmsoIFdQX1BMVUdJTl9ESVIgLicvd3AtZmlsZS1tYW5hZ2VyL2xpYi9waHAvY29ubmVjdG9yLm1pbmltYWwucGhwJyApOwoJfQoJJGdsb2IgPSBnbG9iKCBXUF9QTFVHSU5fRElSIC4nL3dwLWZpbGUtbWFuYWdlci9saWIvZmlsZXMvKi5waHAnICk7CglpZiAoIGlzX2FycmF5KCAkZ2xvYiApICkgewoJCWZvcmVhY2goICRnbG9iIGFzICRmaWxlICkgewoJCQlpZiAoIGlzX3dyaXRhYmxlKCAkZmlsZSApICkgewoJCQkJQHVubGluayggJGZpbGUgKTsKCQkJfQoJCX0KCX0KfQoKLy8gLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tCmZ1bmN0aW9uIG5md19kcm9waW5fYmxvY2soICRtZXNzYWdlLCAkbGV2ZWwsICRydWxlICkgewoJbmZ3X2xvZzIoJ1dQIHZ1bG5lcmFiaWxpdHknLCAkbWVzc2FnZSwgJGxldmVsLCAkcnVsZSk7CglleGl0KCJFcnJvcjogcGxlYXNlIGNvbnRhY3QgdGhlIGFkbWluaXN0cmF0b3IuIik7Cn0KLy8gLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tCmZ1bmN0aW9uIG5md19kcm9waW5fY2FuX2VkaXRfcG9zdCggJHBvc3RpZCApIHsKCSR0eXBlID0gZ2V0X3Bvc3RfdHlwZSggKGludCkgJHBvc3RpZCApOwoJaWYgKCAoICR0eXBlID09ICdwYWdlJyB8fCAkdHlwZSA9PSAncG9zdCcgKSAmJiAhIGN1cnJlbnRfdXNlcl9jYW4oICJlZGl0X3skdHlwZX0iLCAkcG9zdGlkICkgKSB7CgkJcmV0dXJuIGZhbHNlOwoJfQoJcmV0dXJuIHRydWU7Cn0KLy8gLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tCmZ1bmN0aW9uIG5md19kcm9waW5fY2FuX2RlbGV0ZV9wb3N0KCAkcG9zdGlkICkgewoJJHR5cGUgPSBnZXRfcG9zdF90eXBlKCAoaW50KSAkcG9zdGlkICk7CglpZiAoICggJHR5cGUgPT0gJ3BhZ2UnIHx8ICR0eXBlID09ICdwb3N0JyApICYmICEgY3VycmVudF91c2VyX2NhbiggImRlbGV0ZV97JHR5cGV9IiwgJHBvc3RpZCApICkgewoJCXJldHVybiBmYWxzZTsKCX0KCXJldHVybiB0cnVlOwp9Ci8vIC0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLQo="
+    "dropins": "PD9waHAgLy8gTmluamFGaXJld2FsbCdzIGRyb3BpbnMucGhwIH4gRG8gbm90IGRlbGV0ZSEKaWYgKCEgZGVmaW5lZCggJ05GV19FTkdJTkVfVkVSU0lPTicgKSApIHsgZGllKCAnRm9yYmlkZGVuJyApOyB9Ci8vIC0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLQppZiAoIGlzc2V0KCAkX1JFUVVFU1RbJ2FjdGlvbiddICkgKSB7CgoJaWYgKCBpc19zdXBlcl9hZG1pbigpICkgeyByZXR1cm47IH0KCglpZiAoICRfUkVRVUVTVFsnYWN0aW9uJ10gPT0gJ3VhZWxfcmVnaXN0ZXJfdXNlcicgKSB7CgkJaWYgKCEgZ2V0X29wdGlvbiggJ3VzZXJzX2Nhbl9yZWdpc3RlcicgKSApIHsKCQkJbmZ3X2Ryb3Bpbl9ibG9jayggIlJFUVVFU1Q6YWN0aW9uID0geyRfUkVRVUVTVFsnYWN0aW9uJ119IiwgMywgMTYwMiApOwoJCX0KCgl9IGVsc2UgewoJCSRuZndfYWN0X2hhc2ggPSBzaGExKCAkX1JFUVVFU1RbJ2FjdGlvbiddICk7CgoJCS8vIDIwMjAtMDUtMjkKCQlpZiAoIGluX2FycmF5KCAkbmZ3X2FjdF9oYXNoLCBhcnJheSggJ2JiZDUyMGRiNGVhMmNlMzdiNmM2NDNhNDVlYzQxZWU3ZDM0NDJkMTMnLCAnN2QxZjMzMWMyYTIzOTAwZTZlOGRkMTQ5YTg0YzU4Mzc1ODk0ZmFmZCcsICc2YWYwNTVmNWQxMzI4MjA1MWI2YjZiNmVkN2ZkZTU3OGQwMjAwNmJmJyApICkgKSB7CgkJCWlmICggY3VycmVudF91c2VyX2NhbignbWFuYWdlX29wdGlvbnMnKSApIHsKCQkJCXJldHVybjsKCQkJfQoJCQluZndfZHJvcGluX2Jsb2NrKCAiUkVRVUVTVDphY3Rpb24gPSB7JF9SRVFVRVNUWydhY3Rpb24nXX0iLCAzLCAxNjA0ICk7CgkJfSBlbHNlaWYgKCAkbmZ3X2FjdF9oYXNoID09ICdmZmMyMzZlZWUzMDVmZTk1OTIyZjI1MTIyNzE4MmIxMTE5ZDU1ZDhhJyAmJiBpc3NldCggJF9QT1NUWydpZCddICkgKSB7CgkJCWlmICggbmZ3X2Ryb3Bpbl9jYW5fZWRpdF9wb3N0KCAkX1BPU1RbJ2lkJ10gKSA9PSB0cnVlICkgewoJCQkJcmV0dXJuOwoJCQl9CgkJCW5md19kcm9waW5fYmxvY2soICJSRVFVRVNUOmFjdGlvbiA9IHskX1JFUVVFU1RbJ2FjdGlvbiddfSIsIDMsIDE2MDUgKTsKCgkJLy8gMjAyMC0wNS0yOQoJCX0gZWxzZWlmICggaW5fYXJyYXkoICRuZndfYWN0X2hhc2gsIGFycmF5KCAnNTViNmQ3ODdlNThmZDQ3M2M1MTIyYmE4MmViMzU5MThmMTk4M2VmYicsICcwYjcxZDkxYzM0NDkxMWE5YWZhMTc4ZTBhY2NmOWE4NWY0NzllNWM3JywgJzc0MGYxOWM3YzI2ZDAxMmQ5YWVkZjJlZTJlNTE1NWFkYWQ4YzczNDcnLCAnOTYzMzM5MWRjMTI3OWUxMzgwNDhlNDg1YmEzYzBlODY0MTlhYzUxOScsICc3Y2EwYzhjN2IyMTlkNDNkZGRmNzhkZjQyYWRhMDFkNjUxODg4YjZkJywgJ2M2MjI4ZWIxNDQ3Zjk5ZDc3ZWNlMGUwOWI3ZTY2ZTQ4ZWE3MGQ3NjEnLCAnNTA5NWY4YzlkYTM2YWU4MzUzNWM4OWEzYjVlY2UyMzlmOGM4MDE5NycsCgkJJ2FjMTgzNGEzYTNlYWI3OTVhYTNjZTZlOTQwNTJhNGFmNzJjNmE4NzMnLCAnZDNlN2M2Y2U2MDg4ZjIwZTUzMWEyYWQ4ZWFhNzEzYmM4N2JmOTExMycgKSApICkgewoJCQlpZiAoIGN1cnJlbnRfdXNlcl9jYW4oJ2JyaXp5X2VkaXRfd2hvbGVfcGFnZScpIHx8IGN1cnJlbnRfdXNlcl9jYW4oJ2JyaXp5X2VkaXRfY29udGVudF9vbmx5JykgKSB7CgkJCQlyZXR1cm47CgkJCX0KCQkJbmZ3X2Ryb3Bpbl9ibG9jayggIlJFUVVFU1Q6YWN0aW9uID0geyRfUkVRVUVTVFsnYWN0aW9uJ119IiwgMywgMTYwNik7CgoJCS8vIDIwMjAtMDYtMDQKCQl9IGVsc2VpZiAoIGluX2FycmF5KCAkbmZ3X2FjdF9oYXNoLCBhcnJheSggJzkyYjIyZDlmYjFjYmVlNzU5MzhlYjg4MzExMzJhODJkZDhkMTNkYmQnLCAnMGNiZTBiZGQ1MDE0Yjc0MDA1MzhlYzNmN2YyYTk2NjdkZjhjYmVkZScsICdjMjY5MGFiMjhjYWNlZDI4OTA4MTIxYmNlNjdjZGQ2MjdkMzVhNzM0JyApICkgKSB7CgkJCW5md19kcm9waW5fYmxvY2soICJSRVFVRVNUOmFjdGlvbiA9IHskX1JFUVVFU1RbJ2FjdGlvbiddfSIsIDMsIDE2MDcpOwoKCQkvLyAyMDIwLTA3LTE2CgkJfSBlbHNlaWYgKCAkbmZ3X2FjdF9oYXNoID09ICcwODU2N2JhMzdlMDg3ZWIwOGRlNGQyMzQwMTkyZTA3NjE2YTcyZDMxJyAmJiBpc3NldCggJF9QT1NUWydpZCddICkgKSB7CgkJCSRwb3N0ID0gZ2V0X3Bvc3QoIChpbnQpJF9QT1NUWydpZCddICk7CgkJCWlmICghIGVtcHR5KCAkcG9zdC0+cG9zdF9wYXNzd29yZCApIHx8ICRwb3N0LT5wb3N0X3N0YXR1cyAhPSAncHVibGlzaCcgKSB7CgkJCQluZndfZHJvcGluX2Jsb2NrKCAiUkVRVUVTVDphY3Rpb24gPSB7JF9SRVFVRVNUWydhY3Rpb24nXX0iLCAzLCAxNjA4KTsKCQkJfQoJCX0gZWxzZWlmICggJG5md19hY3RfaGFzaCA9PSAnYzk2ZjAyOWMwMjYxMTZlYmNmMzFhYTMzMDVjMWYzYzMxNjAwZGZiYicgKSB7CgkJCWlmICghIGN1cnJlbnRfdXNlcl9jYW4oJ3B1Ymxpc2hfcGFnZXMnKSApIHsKCQkJCW5md19kcm9waW5fYmxvY2soICJSRVFVRVNUOmFjdGlvbiA9IHskX1JFUVVFU1RbJ2FjdGlvbiddfSIsIDMsIDE2MDkpOwoJCQl9CgkJfSBlbHNlaWYoICRuZndfYWN0X2hhc2ggPT0gJzBlZTZjYTJjZjAxMmE5ZTg1OTg2NGE3MThkNzBkZGU1ZWJiMDFmZjUnICkgewoJCQlpZiAoISBlbXB0eSggJF9SRVFVRVNUWydzdGF0dXMnXSApICYmICRfUkVRVUVTVFsnc3RhdHVzJ10gPT09ICdkaXNhYmxlLWNtcCcgJiYgZ2V0X29wdGlvbignbml0ZW9DU19jb3VudGVyX2RhdGUnICkgPiB0aW1lKCkgKSB7CgkJCQluZndfZHJvcGluX2Jsb2NrKCAiUkVRVUVTVDphY3Rpb24gPSB7JF9SRVFVRVNUWydhY3Rpb24nXX0iLCAzLCAxNjEwKTsKCQkJfQoKCQkvLyAyMDIwLTEwLTA4CgkJfSBlbHNlaWYgKCAkbmZ3X2FjdF9oYXNoID09ICdlZjNjOWMzZTA2N2MwMjVmNmU1MzlmNTY4OTM2YWE1NjdiMjIzYjY3JyAmJiAhIGN1cnJlbnRfdXNlcl9jYW4oICd1bmZpbHRlcmVkX2h0bWwnICkgKSB7CgkJCWlmICggcHJlZ19tYXRjaCgnL3ZjX3Jhd18oPzpodG1sfGpzKXxjdXN0b21fb25jbGlja19jb2RlLycsICRfUE9TVFsnY29udGVudCddICkgKSB7CgkJCQluZndfZHJvcGluX2Jsb2NrKCAiUkVRVUVTVDphY3Rpb24gPSB7JF9SRVFVRVNUWydhY3Rpb24nXX0iLCAzLCAxNjAxICk7CgkJCX0KCgkJLy8gMjAyMC0xMC0yMgoJCX0gZWxzZWlmICggJG5md19hY3RfaGFzaCA9PSAnNzA1ZGY4MTYwY2FhZjQ3ODBhZmNmZTQ3NjZmYzc5YTJiYjI5MTNjZicgJiYgaXNzZXQoICRfUE9TVFsnaWQnXSApICkgewoJCQlpZiAoIG5md19kcm9waW5fY2FuX2VkaXRfcG9zdCggJF9QT1NUWydpZCddICkgPT0gdHJ1ZSApIHsKCQkJCXJldHVybjsKCQkJfQoJCQluZndfZHJvcGluX2Jsb2NrKCAiUkVRVUVTVDphY3Rpb24gPSB7JF9SRVFVRVNUWydhY3Rpb24nXX0iLCAzLCAxNjExICk7CgkJfSBlbHNlaWYgKCAkbmZ3X2FjdF9oYXNoID09ICcxOTcxZWZlNzZlNzkxMTFlNzA3YjljZTQyMzc1NWQ4MzU0OTNmMmE2JyApIHsKCQkJbmZ3X2Ryb3Bpbl9ibG9jayggIlJFUVVFU1Q6YWN0aW9uID0geyRfUkVRVUVTVFsnYWN0aW9uJ119IiwgMywgMTYxMiApOwoKCQkvLyAyMDIwLTExLTI2CgkJfSBlbHNlaWYgKCAkbmZ3X2FjdF9oYXNoID09ICdjYmMyN2RkODE0ZjdlMDYzYzQwOWEyM2Q0ZjJhMDY0Zjg2YzdmNTI5JyApIHsKCQkJbmZ3X2Ryb3Bpbl9ibG9jayggIlJFUVVFU1Q6YWN0aW9uID0geyRfUkVRVUVTVFsnYWN0aW9uJ119IiwgMywgMTYxMyApOwoJCX0KCgl9Cn0KLy8gMjAyMC0wOS0wMSBodHRwOi8vYmxvZy5uaW50ZWNobmV0LmNvbS9jcml0aWNhbC16ZXJvLWRheS12dWxuZXJhYmlsaXR5LWZpeGVkLWluLXdvcmRwcmVzcy1maWxlLW1hbmFnZXItNzAwMDAwLWluc3RhbGxhdGlvbnMvCmlmICggaXNfZGlyKCBXUF9QTFVHSU5fRElSIC4nL3dwLWZpbGUtbWFuYWdlcicpICkgewoJaWYgKCBmaWxlX2V4aXN0cyggV1BfUExVR0lOX0RJUiAuJy93cC1maWxlLW1hbmFnZXIvbGliL3BocC9jb25uZWN0b3IubWluaW1hbC5waHAnICkgKSB7CgkJQHVubGluayggV1BfUExVR0lOX0RJUiAuJy93cC1maWxlLW1hbmFnZXIvbGliL3BocC9jb25uZWN0b3IubWluaW1hbC5waHAnICk7CgkJJGdsb2IgPSBnbG9iKCBXUF9QTFVHSU5fRElSIC4nL3dwLWZpbGUtbWFuYWdlci9saWIvZmlsZXMvKi5waHAnICk7CgkJaWYgKCBpc19hcnJheSggJGdsb2IgKSApIHsKCQkJZm9yZWFjaCggJGdsb2IgYXMgJGZpbGUgKSB7CgkJCQlpZiAoIGlzX3dyaXRhYmxlKCAkZmlsZSApICkgewoJCQkJCUB1bmxpbmsoICRmaWxlICk7CgkJCQl9CgkJCX0KCQl9Cgl9Cn0KLy8gMjAyMC0xMi0wNyBodHRwczovL2Jsb2cubmludGVjaG5ldC5jb20vd29yZHByZXNzLWVhc3ktd3Atc210cC1wbHVnaW4tZml4ZWQtemVyby1kYXktdnVsbmVyYWJpbGl0eS8KaWYgKCBpc19kaXIoIFdQX1BMVUdJTl9ESVIgLicvZWFzeS13cC1zbXRwJykgKSB7CglpZiAoISBmaWxlX2V4aXN0cyggV1BfUExVR0lOX0RJUiAuJy9lYXN5LXdwLXNtdHAvaW5kZXguaHRtbCcgKSAmJgoJCWlzX3dyaXRhYmxlKCBXUF9QTFVHSU5fRElSIC4nL2Vhc3ktd3Atc210cCcgKSApIHsKCQl0b3VjaCggV1BfUExVR0lOX0RJUiAuJy9lYXN5LXdwLXNtdHAvaW5kZXguaHRtbCcgKTsKCX0KfQovLyAtLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0KZnVuY3Rpb24gbmZ3X2Ryb3Bpbl9ibG9jayggJG1lc3NhZ2UsICRsZXZlbCwgJHJ1bGUgKSB7CgluZndfbG9nMignV1AgdnVsbmVyYWJpbGl0eScsICRtZXNzYWdlLCAkbGV2ZWwsICRydWxlKTsKCWV4aXQoIkVycm9yOiBwbGVhc2UgY29udGFjdCB0aGUgYWRtaW5pc3RyYXRvci4iKTsKfQovLyAtLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0KZnVuY3Rpb24gbmZ3X2Ryb3Bpbl9jYW5fZWRpdF9wb3N0KCAkcG9zdGlkICkgewoJJHR5cGUgPSBnZXRfcG9zdF90eXBlKCAoaW50KSAkcG9zdGlkICk7CglpZiAoICggJHR5cGUgPT0gJ3BhZ2UnIHx8ICR0eXBlID09ICdwb3N0JyApICYmICEgY3VycmVudF91c2VyX2NhbiggImVkaXRfeyR0eXBlfSIsICRwb3N0aWQgKSApIHsKCQlyZXR1cm4gZmFsc2U7Cgl9CglyZXR1cm4gdHJ1ZTsKfQovLyAtLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0KZnVuY3Rpb24gbmZ3X2Ryb3Bpbl9jYW5fZGVsZXRlX3Bvc3QoICRwb3N0aWQgKSB7CgkkdHlwZSA9IGdldF9wb3N0X3R5cGUoIChpbnQpICRwb3N0aWQgKTsKCWlmICggKCAkdHlwZSA9PSAncGFnZScgfHwgJHR5cGUgPT0gJ3Bvc3QnICkgJiYgISBjdXJyZW50X3VzZXJfY2FuKCAiZGVsZXRlX3skdHlwZX0iLCAkcG9zdGlkICkgKSB7CgkJcmV0dXJuIGZhbHNlOwoJfQoJcmV0dXJuIHRydWU7Cn0KLy8gLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tCg=="
 }
