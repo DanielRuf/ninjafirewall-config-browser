@@ -13,3 +13,5 @@ yarn build
 ```
 
 to bundle your application
+
+For local testing run `caddy file-server -domain localhost --root dist`
