@@ -53,7 +53,7 @@ function renderDropdown() {
     const selectList = document.createElement('select');
     selectList.id = 'config-select';
     selectList.style = 'width:150px;';
-    selectList.className = 'bg-blue-500 text-white appearance-none border-none block rounded px-4';
+    selectList.className = 'bg-blue-500 text-white appearance-none border-none block cursor-pointer rounded px-4';
 
     parent.appendChild(selectListWrapper);
     selectListWrapper.appendChild(selectListWrapperInner);
