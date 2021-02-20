@@ -77,6 +77,14 @@ const configString = config
   .replace(/(\\)/gm, "\\\\")
   .replace(/(\": )/gm, "\":");
 
+
+// add additional configs?
+const config_custom = fs.readFileSync('./src/config/config_custom.json', { encoding: 'utf-8' });
+const config_customString = config_custom
+  .replace(/(\r\n|\n|\r|\t|\s\s\s\s|\s\s)/gm, "")
+  .replace(/(\\)/gm, "\\\\")
+  .replace(/(\": )/gm, "\":");
+
 const rulesString = rules
   .replace(/(\r\n|\n|\r|\t|\s\s\s\s|\s\s)/gm, "")
   .replace(/(\\)/gm, "\\\\")
@@ -137,8 +145,17 @@ module.exports = {
         test: /index\.js$/,
         loader: 'string-replace-loader',
         options: {
+          search: '###CONFIG_CUSTOM###',
+          replace: config_customString,
+        }
+      },
+      {
+        test: /index\.js$/,
+        loader: 'string-replace-loader',
+        options: {
           search: '###RULES###',
           replace: rulesString,
+          flags: 'g',
         }
       },
       {
