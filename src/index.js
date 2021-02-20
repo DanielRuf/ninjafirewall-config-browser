@@ -3,16 +3,22 @@ const date = '20201214';
 const version = '4.3';
 const filename = `nfwp.${version}_${date}`;
 const configData = {
-'default': `###CONFIG###
+'default': {
+    'text': 'default',
+    'config': `###CONFIG###
 :-:
 ###RULES###
 :-:
-`,
-// 'custom': `###CONFIG_CUSTOM###
-// :-:
-// ###RULES###
-// :-:
-// `,
+`
+    },
+'silent': {
+    'text': 'Silent Notification Setup (only important ones)',
+    'config': `###CONFIG_SILENT###
+:-:
+###RULES###
+:-:
+`
+    },
 };
 
 let currentConfig = 'default';
@@ -46,6 +52,7 @@ function renderDropdown() {
 
     const selectList = document.createElement('select');
     selectList.id = 'config-select';
+    selectList.style = 'width:150px;';
     selectList.className = 'bg-blue-500 text-white appearance-none border-none block rounded px-4';
 
     parent.appendChild(selectListWrapper);
@@ -55,7 +62,7 @@ function renderDropdown() {
     for (let i = 0; i < options.length; i++) {
         var option = document.createElement('option');
         option.value = options[i];
-        option.text = options[i];
+        option.text = configData[options[i]].text;
         if (i === 0) {
             option.selected = 'selected';
         }
@@ -65,13 +72,12 @@ function renderDropdown() {
 
 function handleChangeConfig() {
     currentConfig = this.value;
-    console.log(currentConfig);
 }
 
 function handleDownload(evt) {
     evt.preventDefault();
     const email = document.querySelector('[name="email"]').value;
-    const blob = new Blob([configData[currentConfig].replace('notifications@example.com', email)], {type: "text/plain;charset=utf-8"});
+    const blob = new Blob([configData[currentConfig].config.replace('notifications@example.com', email)], {type: "text/plain;charset=utf-8"});
     if (currentConfig === 'default') {
         FileSaver.saveAs(blob, `${filename}.dat`);
     } else {

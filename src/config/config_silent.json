@@ -1,7 +1,7 @@
 {
 	"enabled":1,
 	"blocked_msg":"PGJyIC8+PGJyIC8+PGJyIC8+PGJyIC8+PGNlbnRlcj5Tb3JyeSA8Yj4lJVJFTV9BRERSRVNTJSU8L2I+LCB5b3VyIHJlcXVlc3QgY2Fubm90IGJlIHByb2Nlc3NlZC48YnIgLz5Gb3Igc2VjdXJpdHkgcmVhc29ucywgaXQgd2FzIGJsb2NrZWQgYW5kIGxvZ2dlZC48YnIgLz48YnIgLz4lJU5JTkpBX0xPR08lJTxiciAvPjxiciAvPklmIHlvdSBiZWxpZXZlIHRoaXMgd2FzIGFuIGVycm9yIHBsZWFzZSBjb250YWN0IHRoZTxiciAvPndlYm1hc3RlciBhbmQgZW5jbG9zZSB0aGUgZm9sbG93aW5nIGluY2lkZW50IElEOjxiciAvPjxiciAvPlsgPGI+IyUlTlVNX0lOQ0lERU5UJSU8L2I+IF08L2NlbnRlcj4=",
-	"logo":"\/\/www.webseite-bereinigen.de\/wp-content\/plugins\/ninjafirewall\/images\/ninjafirewall_75.png",
+    "logo": "https:\/\/my-wp-bedrock-site.ddev.site\/app\/plugins\/ninjafirewall\/images\/ninjafirewall_75.png",
 	"ret_code":403,
 	"scan_protocol":"3",
 	"get_scan":1,

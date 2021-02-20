@@ -79,8 +79,8 @@ const configString = config
 
 
 // add additional configs?
-const config_custom = fs.readFileSync('./src/config/config_custom.json', { encoding: 'utf-8' });
-const config_customString = config_custom
+const config_silent = fs.readFileSync('./src/config/config_silent.json', { encoding: 'utf-8' });
+const config_silentString = config_silent
   .replace(/(\r\n|\n|\r|\t|\s\s\s\s|\s\s)/gm, "")
   .replace(/(\\)/gm, "\\\\")
   .replace(/(\": )/gm, "\":");
@@ -145,8 +145,8 @@ module.exports = {
         test: /index\.js$/,
         loader: 'string-replace-loader',
         options: {
-          search: '###CONFIG_CUSTOM###',
-          replace: config_customString,
+          search: '###CONFIG_SILENT###',
+          replace: config_silentString,
         }
       },
       {
