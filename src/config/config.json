@@ -77,8 +77,8 @@
     "welcome": 1,
     "response_headers": "0001000000",
     "referrer_policy_enabled": 0,
-    "engine_version": "4.3",
-    "rules_version": "20201214.1",
+    "engine_version": "4.3.4",
+    "rules_version": "20210615.1",
     "substitute": "X",
     "csp_frontend_data": "",
     "csp_backend_data": "script-src 'self' 'unsafe-inline' 'unsafe-eval' *.videopress.com *.google.com *.wp.com;",
@@ -87,5 +87,10 @@
     "no_restapi": 0,
     "snapdir": "",
     "disallow_publish": 1,
-    "enum_feed": 1
+    "enum_feed": 1,
+    "a_25": 1,
+    "php_superglobals": 0,
+    "disallow_privesc_mu": 0,
+    "enum_sitemap": 1,
+    "no_appswd": 0
 }
