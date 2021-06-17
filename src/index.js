@@ -1,6 +1,6 @@
 const FileSaver = require('file-saver');
-const date = '20201214';
-const version = '4.3';
+const date = '20210617';
+const version = '4.3.4';
 const filename = `nfwp.${version}_${date}`;
 const configData = {
 'default': {
