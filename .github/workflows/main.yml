@@ -20,4 +20,5 @@ jobs:
         BASE_BRANCH: master # The branch the action should deploy from.
         BRANCH: gh-pages # The branch the action should deploy to.
         FOLDER: dist # The folder the action should deploy.
-        CLEAN: true # Remove old files
+        CLEAN: true # Remove old files.
+        PRESERVE: true # Preserves and restores the workspace prior to deployment.
