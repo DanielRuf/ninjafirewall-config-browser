@@ -10,9 +10,9 @@ jobs:
       with:
         node-version: ${{ matrix.node }}
     - name: Install dependencies
-        run: yarn --silent
+      run: yarn --silent
     - name: Build
-        run: yarn build
+      run: yarn build
     - name: Deploy
       uses: JamesIves/github-pages-deploy-action@releases/v3
       with:
